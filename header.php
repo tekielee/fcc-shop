@@ -37,13 +37,13 @@
 
         $navbar_option = 'simple'; // later on get_option('navbar_option'); from the admin
 
-        if ($navbar_option === 'simple') {
+        if ( $navbar_option === 'simple' ) {
 
-            get_template_part ('template-parts/navbar-simple');
+            get_template_part ( 'template-parts/navbar-simple' );
 
         } else {
 
-            get_template_part ('template-parts/navbar-multilevel');
+            get_template_part ( 'template-parts/navbar-multilevel' );
 
         }
 

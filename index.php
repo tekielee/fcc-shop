@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
 
-    <?php ?>
+    
 
 </div>
 

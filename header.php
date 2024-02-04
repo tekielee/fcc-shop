@@ -5,7 +5,7 @@
 
         <title><?php bloginfo('name'); ?><?php wp_title(); ?></title>
 
-    	  <meta charset="<?php bloginfo( 'charset' ); ?>" />
+    	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 
         <meta name="description" content="<?php echo bloginfo('description');?>" />
 
@@ -25,9 +25,9 @@
 
         <script src="<?php echo get_template_directory_uri() . '/assets/js/site.js'?>"></script>
 
-    	  <?php wp_head(); ?>
+    	<?php wp_head(); ?>
 
-        </head>
+    </head>
 
 <body <?php body_class(); ?>>
 

@@ -115,4 +115,40 @@ if ( ! function_exists ( 'generateMenuHiarchy' ) ) {
 
 }
 
+if ( ! function_exists ( 'bwct_menu' ) ) {
+
+    function bwct_menu () {
+
+    	add_menu_page(
+
+    		__( 'Bootstrap WC Theme', 'textdomain' ),
+
+    		'Bootstrap WC Theme',
+
+    		'manage_options',
+
+    		'custompage',
+
+            'bwct_menu_page',
+
+            get_template_directory_uri () . '/images/bwct_icon.png'
+
+    	);
+
+    }
+
+}
+
+add_action( 'admin_menu', 'bwct_menu' );
+
+if ( ! function_exists ( 'bwct_menu_page' ) ) {
+
+    function bwct_menu_page () {
+
+    	echo 'hi';
+
+    }
+
+}
+
 ?>

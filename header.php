@@ -11,11 +11,11 @@
 
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
 
-        <link rel="stylesheet" href="<?php echo get_template_directory_uri() . '/style.css'?>" />
-
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" />
+
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri() . '/style.css'?>" />
 
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
 

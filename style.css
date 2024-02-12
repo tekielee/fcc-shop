@@ -1,0 +1,15 @@
+@media (min-width: 300px) and (max-width: 767.98px) {
+
+    .card-mobile {
+
+        width: auto !important;
+
+    }
+
+}
+
+.card-desktop {
+
+    width: 18rem;
+
+}

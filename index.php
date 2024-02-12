@@ -2,13 +2,19 @@
 
 <div class="container-fluid">
 
+    <div class="container">
+
+        <div class="container text-center p-3"><h3>FEATURE PRODUCTS</h3></div>
+
+        <div class="row">
+
 <?php
 
 $args = array(
 
  'orderby'  => 'name',
 
- 'limit' => 10,
+ 'limit' => 8,
 
 );
 
@@ -26,23 +32,31 @@ for ( $i = 0; $i < sizeof ( $products ); $i++ ) {
 
 ?>
 
-    <div class="card" style="width: 18rem;">
+            <div class="col p-3">
 
-        <img src="<?php echo $image[0] ?>" class="card-img-top" alt="<?php echo $data['name'] ?>">
+                <div class="card card-desktop card-mobile">
 
-        <div class="card-body">
+                    <img src="<?php echo $image[0] ?>"
 
-            <h5 class="card-title"><?php echo $data['name'] ?></h5>
+                        class="card-img-top"
 
-            <p class="card-text"><?php echo $data['description'] ?></p>
+                        alt="<?php echo $data['name'] ?>"
 
-            <p class="card-text"><span class="fw-bold">Price:</span> <?php echo ' $' . $data['price'] ?></p>
+                    >
 
-            <a href="#" class="btn btn-primary">Add to Cart</a>
+                    <div class="card-body">
 
-        </div>
+                        <h5 class="card-title"><?php echo $data['name'] ?></h5>
 
-    </div>
+                        <p class="card-text"><span class="fw-bold">Price:</span> <?php echo ' $' . $data['price'] ?></p>
+
+                        <a href="<?php echo $data['product_url'] ?>" class="btn btn-primary">Learn more</a>
+
+                    </div>
+
+                </div>
+
+            </div>
 
 <?php
 
@@ -55,6 +69,10 @@ for ( $i = 0; $i < sizeof ( $products ); $i++ ) {
 
 
 ?>
+
+        </div>
+
+    </div>
 
 </div>
 

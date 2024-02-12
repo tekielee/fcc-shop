@@ -1,65 +1,68 @@
-<div class="container">
+<div class="container px-4 py-2" id="custom-cards">
+    <h3 class="pb-2 border-bottom">FEATURE PRODUCTS</h3>
 
-    <div class="container text-center p-3"><h3>FEATURE PRODUCTS</h3></div>
-
-    <div class="row">
-
-<?php
-
-$args = array(
-
-'orderby'  => 'name',
-
-'limit' => 8,
-
-);
-
-$products = wc_get_products( $args );
-
-for ( $i = 0; $i < sizeof ( $products ); $i++ ) {
-
-$data = $products [ $i ]->get_data ();
-
-$image = wp_get_attachment_image_src (
-
-    get_post_thumbnail_id( $products [ $i ]->get_id () ),
-
-    'single-post-thumbnail' );
-
-?>
-
-        <div class="col p-3">
-
-            <div class="card card-desktop card-mobile">
-
-                <img src="<?php echo $image[0] ?>"
-
-                    class="card-img-top"
-
-                    alt="<?php echo $data['name'] ?>"
-
-                >
-
-                <div class="card-body">
-
-                    <h5 class="card-title"><?php echo $data['name'] ?></h5>
-
-                    <p class="card-text"><span class="fw-bold">Price:</span> <?php echo ' $' . $data['price'] ?></p>
-
-                    <a href="<?php echo get_site_url () . '/product/?product_id=' . $data['id'] ?>" class="btn btn-primary">Learn more</a>
-
-                </div>
-
-            </div>
-
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Short title, long jacket</h3>
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="me-auto">
+                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+              </li>
+              <li class="d-flex align-items-center me-3">
+                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+                <small>Earth</small>
+              </li>
+              <li class="d-flex align-items-center">
+                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
+                <small>3d</small>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
 
-<?php
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Much longer title that wraps to multiple lines</h3>
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="me-auto">
+                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+              </li>
+              <li class="d-flex align-items-center me-3">
+                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+                <small>Pakistan</small>
+              </li>
+              <li class="d-flex align-items-center">
+                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
+                <small>4d</small>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-}
-
-?>
-
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
+          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Another longer title belongs here</h3>
+            <ul class="d-flex list-unstyled mt-auto">
+              <li class="me-auto">
+                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+              </li>
+              <li class="d-flex align-items-center me-3">
+                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+                <small>California</small>
+              </li>
+              <li class="d-flex align-items-center">
+                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
+                <small>5d</small>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-
-</div>
+  </div>

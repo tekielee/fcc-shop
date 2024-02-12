@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pt-4">
 
     <div class="container text-center p-3"><h3>HOT PRODUCTS</h3></div>
 

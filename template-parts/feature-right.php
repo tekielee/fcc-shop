@@ -1,6 +1,4 @@
-<hr class="featurette-divider p-3">
-
-<div class="row featurette pb-3">
+<div class="row featurette pb-3 mt-5 mb-5">
   <div class="col-md-7">
     <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-body-secondary">Checkmate.</span></h2>
     <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>

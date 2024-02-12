@@ -1,5 +1,5 @@
-<div class="container px-4 py-2" id="custom-cards">
-    <h3 class="pb-2 border-bottom">FEATURE PRODUCTS</h3>
+<div class="container px-4 py-2 mt-5 mb-5" id="custom-cards">
+    <h3 class="pb-2">FEATURE PRODUCTS</h3>
 
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
       <div class="col">

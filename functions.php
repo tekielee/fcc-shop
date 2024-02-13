@@ -183,4 +183,13 @@ if ( ! function_exists ( 'get_images_gallery' )) {
 
 }
 
+if ( ! function_exists ( 'get_product_attachment_ids' )) {
+
+    function get_product_attachment_ids ( $product ) {
+
+        return $product->get_gallery_image_ids ();
+
+    }
+
+}
 ?>

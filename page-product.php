@@ -2,19 +2,28 @@
 
 <?php
 
-    $product_id = $_REQUEST['product_id'];
+    $product_id = $_REQUEST [ 'product_id' ];
 
     $product = wc_get_product ( $product_id );
 
+    $product_related_ids = wc_get_related_products ( $product_id );
+
     $data = $product->get_data ();
 
-    $attachment_ids = $product->get_gallery_image_ids ();
+    $attachment_thumbnails = [];
 
-    $attachment_thumbnails = get_images_gallery ( $attachment_ids, array ( '80', '80' ) );
+    foreach ( $product_related_ids as $product_related_id ) {
 
-    echo '<pre>';
-    print_r($product);
-    echo '</pre>';
+        $attachment_thumbnails[$product_related_id] = get_woocommerce_image ( $product_related_id, $image_size = 'thumbnail' );
+
+    }
+
+    // echo '<pre>';
+    // print_r($product_related_id);
+    // echo '</pre>';
+    // echo '<pre>';
+    // print_r($product);
+    // echo '</pre>';
 
 ?>
 
@@ -26,13 +35,13 @@
 
         <h2 class="featurette-heading fw-normal lh-1">
 
-            <?php _e ( $data[ 'name' ] ); ?>
+            <span id="name"><?php _e ( $data[ 'name' ] ); ?></span>
 
         </h2>
 
         <p class="lead">
 
-            <?php _e ( $data [ 'description' ] ); ?>
+            <span id="description"><?php _e ( $data [ 'description' ] ); ?></span>
 
         </p>
 
@@ -40,17 +49,31 @@
 
         <div class="col-md-5 order-md-1">
 
-            <img src="<?php _e ( get_woocommerce_image ( $product_id ) ); ?>" width="500" height="600" />
+            <img id="image-full" src="<?php _e ( get_woocommerce_image ( $product_id ) ); ?>" width="530" height="600" />
 
             <div class="d-flex justify-content-center pt-1">
 
-                <?php foreach ( $attachment_thumbnails as $attachment_thumbnail ) {?>
+                <div class="p-2 bd-highlight">
 
-                    <div class="p-2 bd-highlight">
+                    <a href="javascript:void(0)" id="<?php _e ( $product_id ); ?>">
+                        <img src="<?php _e ( get_woocommerce_image ( $product_id ) ); ?>"
+                            width="80" height="80"
+                        />
+                    </a>
 
-                        <?php _e ( $attachment_thumbnail ); ?>
+                </div>
 
-                    </div>
+                <?php foreach ( $attachment_thumbnails as $product_related_id => $attachment_thumbnail ) { ?>
+
+                <div class="p-2 bd-highlight">
+
+                    <a href="javascript:void(0)" id="<?php _e ( $product_related_id ); ?>">
+                        <img src="<?php _e ( $attachment_thumbnail ); ?>"
+                            width="80" height="80"
+                        />
+                    </a>
+
+                </div>
 
                 <?php } ?>
 

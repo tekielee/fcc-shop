@@ -55,7 +55,7 @@
 
                 <div class="p-2 bd-highlight">
 
-                    <a href="javascript:void(0)" id="<?php _e ( $product_id ); ?>">
+                    <a href="javascript:void(0)" class="<?php _e ( 'product_' . $product_id ); ?>">
                         <img src="<?php _e ( get_woocommerce_image ( $product_id ) ); ?>"
                             width="80" height="80"
                         />
@@ -67,7 +67,7 @@
 
                 <div class="p-2 bd-highlight">
 
-                    <a href="javascript:void(0)" id="<?php _e ( $product_related_id ); ?>">
+                    <a href="javascript:void(0)" class="<?php _e ( 'product_' . $product_related_id ); ?>">
                         <img src="<?php _e ( $attachment_thumbnail ); ?>"
                             width="80" height="80"
                         />

@@ -151,4 +151,36 @@ if ( ! function_exists ( 'bwct_menu_page' ) ) {
 
 }
 
+if ( ! function_exists ( 'get_woocommerce_image' ) ) {
+
+    function get_woocommerce_image ( $product_id, $image_size = 'single-post-thumbnail' ) {
+
+        return wp_get_attachment_image_src (
+
+            get_post_thumbnail_id( $product_id ),
+
+            $image_size )[0];
+
+    }
+
+}
+
+if ( ! function_exists ( 'get_images_gallery' )) {
+
+    function get_images_gallery ( $attachment_ids, $image_size = 'thumbnail' ) {
+
+        $attachments = [];
+
+        foreach ( $attachment_ids as $attachment_id ) {
+
+            array_push ($attachments, wp_get_attachment_image ( $attachment_id, $image_size ) );
+
+        }
+
+        return $attachments;
+
+    }
+
+}
+
 ?>

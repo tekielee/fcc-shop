@@ -18,13 +18,11 @@ $products = wc_get_products( $args );
 
 for ( $i = 0; $i < sizeof ( $products ); $i++ ) {
 
-$data = $products [ $i ]->get_data ();
+    $data = $products [ $i ]->get_data ();
 
-$image = wp_get_attachment_image_src (
+    $image = get_woocommerce_image ( $products [ $i ]->get_id (), 'single-post-thumbnail' );
 
-    get_post_thumbnail_id( $products [ $i ]->get_id () ),
-
-    'single-post-thumbnail' );
+    $short_description = $products [ $i ]->get_short_description ();
 
 ?>
 
@@ -32,7 +30,7 @@ $image = wp_get_attachment_image_src (
 
             <div class="card card-desktop card-mobile">
 
-                <img src="<?php echo $image[0] ?>"
+                <img src="<?php echo $image ?>"
 
                     class="card-img-top"
 
@@ -43,6 +41,8 @@ $image = wp_get_attachment_image_src (
                 <div class="card-body">
 
                     <h5 class="card-title"><?php echo $data['name'] ?></h5>
+
+                    <p><span class="fw-bold">Description:</span><?php echo ' ' . $short_description ?></p>
 
                     <p class="card-text"><span class="fw-bold">Price:</span> <?php echo ' $' . $data['price'] ?></p>
 

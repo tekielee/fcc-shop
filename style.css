@@ -13,3 +13,18 @@
     width: 18rem;
 
 }
+
+.star-rating {
+
+    width:15px;
+
+    height:15px;
+
+}
+
+.product-table td {
+
+    width: 230px;
+
+    padding: 5px;
+}

@@ -10,6 +10,8 @@
 
     $data = $product->get_data ();
 
+    $average = 3;//$product->get_average_rating();
+
     $attachment_thumbnails = [];
 
     foreach ( $product_related_ids as $product_related_id ) {
@@ -39,11 +41,66 @@
 
         </h2>
 
-        <p class="lead">
+        <p>
+        <?php
+            if ( $average > 0 ) {
+
+                $width = 'width:' . ( ( $average / 5 ) * 100 ) . '%;';
+        ?>
+
+            <div class="star-rating "><div
+                style="height:15px;<?php _e ($width); ?>background-color:yellow;"
+            ></div></div>
+
+        <?php } ?>
+
+        </p>
+
+        <p class="fw-bold"><?php _e ( '$' . number_format ( $data [ 'price' ], 2 ) ); ?></p>
+
+        <p>
 
             <span id="description"><?php _e ( $data [ 'description' ] ); ?></span>
 
         </p>
+
+        <table class="product-table">
+
+            <tr>
+
+                <td class="fw-bold">Type:</td>
+
+                <td>Mark</td>
+
+            </tr>
+
+            <tr>
+
+                <td class="fw-bold">Color:</td>
+
+                <td>Jacob</td>
+
+            </tr>
+
+            <tr>
+
+                <td class="fw-bold">Material:</td>
+
+                <td>Larry</td>
+
+            </tr>
+
+            <tr>
+
+                <td class="fw-bold">Brand:</td>
+
+                <td>Larry</td>
+
+            </tr>
+
+        </table>
+
+        <hr/>
 
         </div>
 

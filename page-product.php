@@ -10,6 +10,10 @@
 
     $data = $product->get_data ();
 
+    $sizes = $product->get_attribute( 'size' );
+
+    $sizes = explode ( ',', $sizes );
+
     $average = 3;//$product->get_average_rating();
 
     $attachment_thumbnails = [];
@@ -101,6 +105,71 @@
         </table>
 
         <hr/>
+
+        <table class="product-attribute-table">
+
+            <tr>
+
+                <td>
+
+                    <p>Sizes:</p>
+
+                    <select name="sizes" class="sizes">
+
+                        <?php
+
+                            foreach ( $sizes as $size ) {
+
+                        ?>
+
+                        <option value="<?php _e ( $size ); ?>"><?php _e ( $size ); ?></option>
+
+                        <?php
+
+                            }
+
+                        ?>
+
+                    </select>
+
+                </td>
+
+                <td>
+
+                    <p>Quantity:</p>
+
+                    <select name="quantity" class="quantity">
+
+                        <?php
+
+                            for ( $i = 1; $i <= 10; $i++ ) {
+
+                        ?>
+
+                        <option value="<?php _e ( $i ); ?>"><?php _e ( $i ); ?></option>
+
+                        <?php
+
+                            }
+
+                        ?>
+
+                    </select>
+                </td>
+
+            </tr>
+
+        </table>
+
+        <div class="d-flex justify-content-between mt-5">
+
+            <button type="button" class="btn btn-warning px-4">Buy Now</button>
+
+            <button type="button" class="btn btn-primary px-4">Add To Cart</button>
+
+            <button type="button" class="btn btn-light px-5">Save</button>
+
+        </div>
 
         </div>
 

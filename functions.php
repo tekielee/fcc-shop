@@ -4,7 +4,11 @@ if ( ! function_exists ( 'register_my_menu' ) ) {
 
     function register_my_menu () {
 
-        register_nav_menu( 'primary', __( 'Primary Menu', 'bootstrap-woocommerce' ) );
+        register_nav_menus( array (
+
+			'main-menu' => esc_html__( 'Main menu', 'bootstrap-woocommerce' ),
+
+		) );
 
     }
 

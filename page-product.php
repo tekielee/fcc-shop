@@ -215,39 +215,46 @@
 
             <td>
 
-                <ul class="nav">
+                <div class="d-flex justify-content-between pb-4" style="padding-right:60px;">
 
-                    <li class="nav-item">
+                    <div class="p-2 px-4 bg-light">
 
-                        <a id="spec" class="nav-link active" aria-current="page" href="javascript:void(0)">SPECIFICATION</a>
+                        <a id="spec" class="nav-link fw-bold" href="javascript:void(0)">SPECIFICATION</a>
 
-                    </li>
+                    </div>
 
-                    <li class="nav-item">
+                    <div class="p-2 px-4 bg-light">
 
-                        <a id="warranty" class="nav-link" href="javascript:void(0)">WARRANTY INFO</a>
+                        <a id="warranty" class="nav-link fw-bold" href="javascript:void(0)">WARRANTY INFO</a>
 
-                    </li>
+                    </div>
 
-                    <li class="nav-item">
+                    <div class="p-2 px-4 bg-light">
 
-                        <a id="shipping" class="nav-link" href="javascript:void(0)">SHIPPING INFO</a>
+                        <a id="shipping" class="nav-link fw-bold" href="javascript:void(0)">SHIPPING INFO</a>
+                    </div>
 
-                    </li>
+                    <div class="p-2 px-4 bg-light">
 
-                    <li class="nav-item">
+                        <a id="seller" class="nav-link fw-bold" href="javascript:void(0)">SELLER PROFILE</a>
 
-                        <a id="seller" class="nav-link" href="javascript:void(0)">SELLER PROFILE</a>
+                    </div>
 
-                    </li>
+                </div>
 
-                </ul>
+                <div class="container" id="spec-content">Specs content</div>
+
+                <div class="container" id="warranty-content">Warranty content</div>
+
+                <div class="container" id="shipping-content">Shipping content</div>
+
+                <div class="container" id="seller-content">Seller content</div>
 
             </td>
 
             <td>
 
-                <h4>Similar Products</h4>
+                <h5 class="text-center">Similar Products</h5>
 
                 <div class="list-group">
 

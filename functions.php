@@ -17,35 +17,41 @@ if ( ! function_exists ( 'getMenu' ) ) {
 
     function getMenu ( ) {
 
-        $theme_location = wp_get_nav_menu_name( 'primary' );
+        if ( has_nav_menu ( 'primary' ) ) {
 
-        $menu_items = wp_get_nav_menu_items( $theme_location );
+            $theme_location = wp_get_nav_menu_name( 'primary' );
 
-  	         function buildMenu( $ID, $menu_items ) {
+            $menu_items = wp_get_nav_menu_items( $theme_location );
 
-	             $menu = array();
+      	         function buildMenu( $ID, $menu_items ) {
 
-	             foreach ( $menu_items as $menu_item ) {
+    	             $menu = array();
 
-                     if ( (int)$menu_item->menu_item_parent === $ID )  {
+    	             foreach ( $menu_items as $menu_item ) {
 
-                         $menu[ $menu_item->title ] = array(
+                         if ( (int)$menu_item->menu_item_parent === $ID )  {
 
-		                      'url'      => $menu_item->url,
+                             $menu[ $menu_item->title ] = array(
 
-		                      'children' => buildMenu( $menu_item->ID, $menu_items )
+    		                      'url'      => $menu_item->url,
 
-                          );
+    		                      'children' => buildMenu( $menu_item->ID, $menu_items )
 
-                     }
+                              );
 
-	             }
+                         }
 
-	             return $menu;
-             }
+    	             }
 
-        return buildMenu( 0, $menu_items );
+    	             return $menu;
+                 }
+
+            return buildMenu( 0, $menu_items );
+
+        }
+
     }
+
 }
 
 if ( ! function_exists ( 'generateMenuHiarchy' ) ) {
@@ -147,7 +153,7 @@ if ( ! function_exists ( 'bwct_menu_page' ) ) {
 
     function bwct_menu_page () {
 
-    	echo 'hi';
+    	_e ( 'hi' );
 
     }
 

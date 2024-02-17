@@ -1,24 +1,16 @@
 <?php
 
-add_action( 'after_setup_theme', 'register_my_menu' );
-
 if ( ! function_exists ( 'register_my_menu' ) ) {
 
     function register_my_menu () {
 
-        register_nav_menu (
-            
-            array (
-
-                'primary-menu' => 'Primary Menu'
-
-            )
-
-        );
+        register_nav_menu( 'primary', __( 'Primary Menu', 'bootstrap-woocommerce' ) );
 
     }
 
 }
+
+add_action( 'after_setup_theme', 'register_my_menu' );
 
 
 if ( ! function_exists ( 'getMenu' ) ) {

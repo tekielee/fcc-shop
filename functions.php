@@ -4,11 +4,7 @@ if ( ! function_exists ( 'register_my_menu' ) ) {
 
     function register_my_menu () {
 
-        register_nav_menus( array (
-
-			'main-menu' => esc_html__( 'Main menu', 'bootstrap-woocommerce' ),
-
-		) );
+        register_nav_menu ( 'primary', __( 'Primary Menu', 'bootstrap-woocommerce' ) );
 
     }
 
@@ -19,9 +15,11 @@ add_action( 'after_setup_theme', 'register_my_menu' );
 
 if ( ! function_exists ( 'getMenu' ) ) {
 
-    function getMenu( ) {
+    function getMenu ( ) {
 
-        $menu_items = wp_get_nav_menu_items( 'main_nav' );
+        $theme_location = wp_get_nav_menu_name( 'primary' );
+
+        $menu_items = wp_get_nav_menu_items( $theme_location );
 
   	         function buildMenu( $ID, $menu_items ) {
 

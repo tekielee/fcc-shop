@@ -1,5 +1,7 @@
 $ ( document ).ready ( function () {
 
+    // Main nav hover dropdown menu
+
     $( '.dropdown' ).hover( function() {
 
         $(this).addClass( 'show' );
@@ -14,10 +16,20 @@ $ ( document ).ready ( function () {
 
     });
 
-    $( '[class^="product_"]' ).click( function (event) {
+    // Product detail toggle full gallery images
 
-        console.log(event.currentTarget.className.replace('product_',''));
+    let current_li = 1;
 
+    $( '[class^="thumbnail_"' ).on('click', function (event) {
+
+        $('.full-image li:nth-child(' + current_li + ')').hide();
+
+        let next_li = event.currentTarget.className.replace('thumbnail_', '');
+
+        $('.full-image li:nth-child(' + next_li + ')').show();
+
+        current_li = next_li;
     });
+
 
 } );

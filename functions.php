@@ -19,23 +19,23 @@ if ( ! function_exists ( 'getMenu' ) ) {
 
         if ( has_nav_menu ( 'primary' ) ) {
 
-            $theme_location = wp_get_nav_menu_name( 'primary' );
+            $theme_location = wp_get_nav_menu_name ( 'primary' );
 
-            $menu_items = wp_get_nav_menu_items( $theme_location );
+            $menu_items = wp_get_nav_menu_items ( $theme_location );
 
-      	         function buildMenu( $ID, $menu_items ) {
+      	         function buildMenu ( $ID, $menu_items ) {
 
-    	             $menu = array();
+    	             $menu = array ();
 
     	             foreach ( $menu_items as $menu_item ) {
 
-                         if ( (int)$menu_item->menu_item_parent === $ID )  {
+                         if ( ( int ) $menu_item->menu_item_parent === $ID )  {
 
-                             $menu[ $menu_item->title ] = array(
+                             $menu[ $menu_item->title ] = array (
 
     		                      'url'      => $menu_item->url,
 
-    		                      'children' => buildMenu( $menu_item->ID, $menu_items )
+    		                      'children' => buildMenu ( $menu_item->ID, $menu_items )
 
                               );
 
@@ -46,7 +46,7 @@ if ( ! function_exists ( 'getMenu' ) ) {
     	             return $menu;
                  }
 
-            return buildMenu( 0, $menu_items );
+            return buildMenu ( 0, $menu_items );
 
         }
 
@@ -64,9 +64,9 @@ if ( ! function_exists ( 'generateMenuHiarchy' ) ) {
 
           $menu_hiarchy = '';
 
-          foreach( $menus as $key => $menu ) {
+          foreach ( $menus as $key => $menu ) {
 
-              if( is_array($menu['children'] ) && ! empty($menu['children'] ) ) {
+              if( is_array ( $menu['children'] ) && ! empty ( $menu['children'] ) ) {
 
                   $menu_hiarchy .= '
 
@@ -86,7 +86,7 @@ if ( ! function_exists ( 'generateMenuHiarchy' ) ) {
 
                               <ul class="dropdown-menu">';
 
-                                  foreach($menu['children'] as $key => $menu) {
+                                  foreach ( $menu['children'] as $key => $menu ) {
 
                                       $menu_hiarchy .= '<li><a class="dropdown-item" href="' . $menu['url'] . '">' . $key . '</a></li>';
 
@@ -117,7 +117,7 @@ if ( ! function_exists ( 'generateMenuHiarchy' ) ) {
 
     }
 
-    return buildMenuChildren($menus);
+    return buildMenuChildren ( $menus );
 
   }
 
@@ -127,7 +127,7 @@ if ( ! function_exists ( 'bwct_menu' ) ) {
 
     function bwct_menu () {
 
-    	add_menu_page(
+    	add_menu_page (
 
     		__( 'Bootstrap WC Theme', 'textdomain' ),
 
@@ -147,7 +147,7 @@ if ( ! function_exists ( 'bwct_menu' ) ) {
 
 }
 
-add_action( 'admin_menu', 'bwct_menu' );
+add_action ( 'admin_menu', 'bwct_menu' );
 
 if ( ! function_exists ( 'bwct_menu_page' ) ) {
 
@@ -165,9 +165,9 @@ if ( ! function_exists ( 'get_woocommerce_image' ) ) {
 
         return wp_get_attachment_image_src (
 
-            get_post_thumbnail_id( $product_id ),
+            get_post_thumbnail_id ( $product_id ),
 
-            $image_size )[0];
+            $image_size ) [0];
 
     }
 
@@ -181,7 +181,7 @@ if ( ! function_exists ( 'get_images_gallery' )) {
 
         foreach ( $attachment_ids as $attachment_id ) {
 
-            array_push ($attachments, wp_get_attachment_image ( $attachment_id, $image_size ) );
+            $attachments [ $attachment_id ] = wp_get_attachment_image ( $attachment_id, $image_size );
 
         }
 
@@ -191,7 +191,7 @@ if ( ! function_exists ( 'get_images_gallery' )) {
 
 }
 
-if ( ! function_exists ( 'get_product_attachment_ids' )) {
+if ( ! function_exists ( 'get_product_attachment_ids' ) ) {
 
     function get_product_attachment_ids ( $product ) {
 
@@ -200,4 +200,5 @@ if ( ! function_exists ( 'get_product_attachment_ids' )) {
     }
 
 }
+
 ?>

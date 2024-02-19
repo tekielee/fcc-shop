@@ -1,10 +1,16 @@
-<?php get_header(); ?>
+<?php get_header (); ?>
 
 <?php
 
     $product_id = $_REQUEST [ 'product_id' ];
 
     $product = wc_get_product ( $product_id );
+
+    $attachment_ids = get_product_attachment_ids ( $product );
+
+    $images_gallery_thumbnail = get_images_gallery ( $attachment_ids, $image_size = array ( '80', '80') );
+
+    $images_gallery_full = get_images_gallery ( $attachment_ids, $image_size = array ( '500', '500') );
 
     $product_related_ids = wc_get_related_products ( $product_id );
 
@@ -15,14 +21,6 @@
     $sizes = explode ( ',', $sizes );
 
     $average = 3;//$product->get_average_rating();
-
-    $attachment_thumbnails = [];
-
-    foreach ( $product_related_ids as $product_related_id ) {
-
-        $attachment_thumbnails[$product_related_id] = get_woocommerce_image ( $product_related_id, $image_size = 'thumbnail' );
-
-    }
 
     // echo '<pre>';
     // print_r($product_related_id);
@@ -175,13 +173,41 @@
 
         <div class="col-md-5 order-md-1">
 
-            <img id="image-full" src="<?php _e ( get_woocommerce_image ( $product_id ) ); ?>" width="530" height="600" />
+            <div>
+
+                <ul class="full-image">
+
+                    <li>
+
+                        <img src="<?php _e ( get_woocommerce_image ( $product_id ) ); ?>" width="500" height="500" />
+
+                    </li>
+
+                    <?php
+
+                        foreach ( $images_gallery_full as $key => $image_gallery_full ) {
+
+                    ?>
+
+                    <li>
+
+                    <?php
+
+                            _e ( $image_gallery_full );
+
+                        }
+
+                    ?>
+
+                    </li>
+
+            </ul>
 
             <div class="d-flex justify-content-center pt-1">
 
                 <div class="p-2 bd-highlight">
 
-                    <a href="javascript:void(0)" class="<?php _e ( 'product_' . $product_id ); ?>">
+                    <a href="javascript:void(0)" class="thumbnail_1">
                         <img src="<?php _e ( get_woocommerce_image ( $product_id ) ); ?>"
                             width="80" height="80"
                         />
@@ -189,25 +215,29 @@
 
                 </div>
 
-                <?php foreach ( $attachment_thumbnails as $product_related_id => $attachment_thumbnail ) { ?>
+                <?php $i = 2; foreach ( $images_gallery_thumbnail as $key => $image_gallery_thumbnail ) { ?>
 
                 <div class="p-2 bd-highlight">
 
-                    <a href="javascript:void(0)" class="<?php _e ( 'product_' . $product_related_id ); ?>">
-                        <img src="<?php _e ( $attachment_thumbnail ); ?>"
-                            width="80" height="80"
-                        />
+                    <a href="javascript:void(0)" class="<?php _e ( 'thumbnail_' . $i )?>">
+
+                        <?php _e ( $image_gallery_thumbnail ); ?>
+
                     </a>
 
                 </div>
 
-                <?php } ?>
+                <?php $i++; } ?>
 
             </div>
 
         </div>
 
     </div>
+
+</div>
+
+<div class="container">
 
     <table class="product-related-table">
 
@@ -258,64 +288,33 @@
 
                 <div class="list-group">
 
-                    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+                    <?php foreach ( $product_related_ids as $product_related_id ) {
 
-                    <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                              $product_related = wc_get_product ( $product_related_id );
 
-                        <div class="d-flex gap-2 w-100 justify-content-between">
+                              $data_related = $product_related->get_data ();
 
-                            <div>
+                    ?>
 
-                                <h6 class="mb-0">List group item heading</h6>
+                    <a href="<?php _e ( get_site_url () . '/product/?product_id=' . $product_related_id ); ?>" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
 
-                                <p class="mb-0 opacity-75">Some placeholder content in a paragraph.</p>
-
-                            </div>
-
-                            <small class="opacity-50 text-nowrap">now</small>
-
-                        </div>
-                    </a>
-
-                    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-
-                    <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
+                    <img src="<?php _e ( get_woocommerce_image ( $product_related_id, $image_size = 'thumbnail' ) ); ?>" alt="twbs" width="40" height="40" class="rounded-circle flex-shrink-0">
 
                         <div class="d-flex gap-2 w-100 justify-content-between">
 
                             <div>
 
-                                <h6 class="mb-0">Another title here</h6>
+                                <h6 class="mb-0"><?php _e ( $data_related [ 'name' ] ); ?></h6>
 
-                                <p class="mb-0 opacity-75">Some placeholder content in a paragraph that goes a little longer so it wraps to a new line.</p>
+                                <p class="mb-0 opacity-75"><?php _e ( $data_related [ 'short_description' ] ); ?></p>
 
                             </div>
-
-                            <small class="opacity-50 text-nowrap">3d</small>
 
                         </div>
 
                     </a>
 
-                    <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-
-                    <img src="https://github.com/twbs.png" alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0">
-
-                        <div class="d-flex gap-2 w-100 justify-content-between">
-
-                            <div>
-
-                                <h6 class="mb-0">Third heading</h6>
-
-                                    <p class="mb-0 opacity-75">Some placeholder content in a paragraph.</p>
-
-                            </div>
-
-                            <small class="opacity-50 text-nowrap">1w</small>
-
-                        </div>
-
-                    </a>
+                    <?php } ?>
 
                 </div>
 
@@ -327,4 +326,4 @@
 
 </div>
 
-<?php get_footer(); ?>
+<?php get_footer (); ?>

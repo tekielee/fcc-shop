@@ -1,17 +1,17 @@
-<?php get_header(); ?>
+<?php get_header (); ?>
 
 <?php
 
-$args = array(
+$args = array (
   'numberposts' => 10
 );
 
-$latest_posts = get_posts( $args );
+$latest_posts = get_posts ( $args );
 
 echo '<pre>';
-print_r($latest_posts);
+print_r ( $latest_posts );
 echo '</pre>';
 
 ?>
 
-<?php get_footer(); ?>
+<?php get_footer (); ?>

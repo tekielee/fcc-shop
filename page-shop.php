@@ -1,18 +1,18 @@
-<?php get_header(); ?>
+<?php get_header (); ?>
 
 <?php
 
- $args = array(
+ $args = array (
 
-     'category' => array( 'hoodies' ),
+     'category' => array ( 'hoodies' ),
      'orderby'  => 'name',
  );
- $products = wc_get_products( $args );
+ $products = wc_get_products ( $args );
 
 echo '<pre>';
-print_r($products);
+print_r ( $products );
 echo '</pre>';
 
 ?>
 
-<?php get_footer(); ?>
+<?php get_footer (); ?>

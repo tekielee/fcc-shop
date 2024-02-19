@@ -16,7 +16,7 @@
 
                 <?php
 
-                    if ( !has_nav_menu ( 'primary' ) ) {
+                    if ( ! has_nav_menu ( 'primary' ) ) {
 
                         $pages = get_pages ();
 

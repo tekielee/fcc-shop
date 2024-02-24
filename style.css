@@ -91,5 +91,23 @@
 .product-detail-buton {
 
     margin-top: 11%;
+
+}
+
+#warranty-content {
+
+    display: none;
     
+}
+
+#shipping-content {
+
+    display: none;
+
+}
+
+#seller-content {
+
+    display: none;
+
 }

@@ -58,7 +58,7 @@
 
         </p>
 
-        <p class="fw-bold"><?php _e ( '$' . number_format ( $data [ 'price' ], 2 ) ); ?></p>
+        <p class="fw-bold"><?php _e ( '$' . number_format ( ( float ) $data [ 'price' ], 2 ) ); ?></p>
 
         <p>
 
@@ -272,13 +272,47 @@
 
                 </div>
 
-                <div class="container" id="spec-content">Specs content</div>
+                <div class="container" id="spec-content">
 
-                <div class="container" id="warranty-content">Warranty content</div>
+                    <?php
 
-                <div class="container" id="shipping-content">Shipping content</div>
+                        _e ( wp_unslash ( $product->get_meta ( 'specs' ) ) );
 
-                <div class="container" id="seller-content">Seller content</div>
+                    ?>
+
+                </div>
+
+                <div class="container" id="warranty-content">
+
+                    <?php
+
+                        _e ( wp_unslash ( $product->get_meta ( 'warranty' ) ) );
+
+                    ?>
+
+                </div>
+
+                <div class="container" id="shipping-content">
+
+                    <?php
+
+                        _e ( wp_unslash ( $product->get_meta ( 'shipping' ) ) );
+
+                    ?>
+
+
+                </div>
+
+                <div class="container" id="seller-content">
+
+                    <?php
+
+                        _e ( wp_unslash ( $product->get_meta ( 'seller' ) ) );
+
+                    ?>
+
+
+                </div>
 
             </td>
 

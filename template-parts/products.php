@@ -1,8 +1,8 @@
 <div class="container pt-4">
 
-    <div class="container text-center p-3"><h3>HOT PRODUCTS</h3></div>
+    <div class="container text-center p-3"><h3>PRODUCTS</h3></div>
 
-    <div class="row">
+    <div class="row justify-content-start">
 
 <?php
 
@@ -10,7 +10,7 @@ $args = array(
 
 'orderby'  => 'name',
 
-'limit' => 8,
+//'limit' => 8,
 
 );
 
@@ -26,7 +26,7 @@ for ( $i = 0; $i < sizeof ( $products ); $i++ ) {
 
 ?>
 
-        <div class="col p-3">
+        <div class="col-3 p-3">
 
             <div class="card card-desktop card-mobile">
 

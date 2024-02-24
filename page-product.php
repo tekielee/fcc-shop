@@ -2,32 +2,27 @@
 
 <?php
 
-    $product_id = $_REQUEST [ 'product_id' ];
+    if ( isset ( $_REQUEST [ 'product_id' ] ) && $_REQUEST [ 'product_id' ] !== '') {
 
-    $product = wc_get_product ( $product_id );
+        $product_id = $_REQUEST [ 'product_id' ];
 
-    $attachment_ids = get_product_attachment_ids ( $product );
+        $product = wc_get_product ( $product_id );
 
-    $images_gallery_thumbnail = get_images_gallery ( $attachment_ids, $image_size = array ( '80', '80') );
+        $attachment_ids = get_product_attachment_ids ( $product );
 
-    $images_gallery_full = get_images_gallery ( $attachment_ids, $image_size = array ( '500', '500') );
+        $images_gallery_thumbnail = get_images_gallery ( $attachment_ids, $image_size = array ( '80', '80') );
 
-    $product_related_ids = wc_get_related_products ( $product_id );
+        $images_gallery_full = get_images_gallery ( $attachment_ids, $image_size = array ( '500', '500') );
 
-    $data = $product->get_data ();
+        $product_related_ids = wc_get_related_products ( $product_id );
 
-    $sizes = $product->get_attribute( 'size' );
+        $data = $product->get_data ();
 
-    $sizes = explode ( ',', $sizes );
+        $sizes = $product->get_attribute( 'size' );
 
-    $average = 3;//$product->get_average_rating();
+        $sizes = explode ( ',', $sizes );
 
-    // echo '<pre>';
-    // print_r($product_related_id);
-    // echo '</pre>';
-    // echo '<pre>';
-    // print_r($product);
-    // echo '</pre>';
+        $average = 3;//$product->get_average_rating();
 
 ?>
 
@@ -357,6 +352,16 @@
         </tr>
 
     </table>
+
+    <?php
+
+        } else {
+
+            get_template_part ( 'template-parts/products' );
+
+        }
+
+    ?>
 
 </div>
 

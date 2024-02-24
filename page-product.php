@@ -159,7 +159,7 @@
 
         </table>
 
-        <div class="d-flex justify-content-between mt-5">
+        <div class="d-flex justify-content-between product-detail-buton">
 
             <button type="button" class="btn btn-warning px-4">Buy Now</button>
 
@@ -298,7 +298,7 @@
 
                     <a href="<?php _e ( get_site_url () . '/product/?product_id=' . $product_related_id ); ?>" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
 
-                    <img src="<?php _e ( get_woocommerce_image ( $product_related_id, $image_size = 'thumbnail' ) ); ?>" alt="twbs" width="40" height="40" class="rounded-circle flex-shrink-0">
+                    <img src="<?php _e ( get_woocommerce_image ( $product_related_id, $image_size = 'thumbnail' ) ); ?>" alt="twbs" width="60" height="60" class="rounded-circle flex-shrink-0">
 
                         <div class="d-flex gap-2 w-100 justify-content-between">
 

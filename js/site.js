@@ -2,17 +2,17 @@ $ ( document ).ready ( function () {
 
     // Main nav hover dropdown menu
 
-    $( '.dropdown' ).hover( function() {
+    $( '.dropdown' ).hover ( function() {
 
-        $(this).addClass( 'show' );
+        $(this).addClass ( 'show' );
 
-        $(this).find(' .dropdown-menu ').addClass( 'show' );
+        $(this).find ( ' .dropdown-menu ' ).addClass ( 'show' );
 
     }, function() {
 
-        $(this).removeClass( 'show' );
+        $(this).removeClass ( 'show' );
 
-        $(this).find( '.dropdown-menu' ).removeClass( 'show' );
+        $(this).find ( '.dropdown-menu' ).removeClass ( 'show' );
 
     });
 
@@ -20,15 +20,16 @@ $ ( document ).ready ( function () {
 
     let current_li = 1;
 
-    $( '[class^="thumbnail_"' ).on('click', function (event) {
+    $( '[class^="thumbnail_"' ).on ( 'click', function ( event ) {
 
-        $('.full-image li:nth-child(' + current_li + ')').hide();
+        $('.full-image li:nth-child(' + current_li + ')').hide ();
 
-        let next_li = event.currentTarget.className.replace('thumbnail_', '');
+        let next_li = event.currentTarget.className.replace ( 'thumbnail_', '' );
 
-        $('.full-image li:nth-child(' + next_li + ')').show();
+        $('.full-image li:nth-child(' + next_li + ')').show ();
 
         current_li = next_li;
+
     });
 
 

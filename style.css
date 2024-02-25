@@ -97,7 +97,7 @@
 #warranty-content {
 
     display: none;
-    
+
 }
 
 #shipping-content {
@@ -109,5 +109,13 @@
 #seller-content {
 
     display: none;
+
+}
+
+.quantity {
+
+    text-align: center;
+
+    width: 50px
 
 }

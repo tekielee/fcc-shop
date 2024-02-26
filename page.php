@@ -1,25 +1,29 @@
 <?php get_header (); ?>
 
-<?php
+<div class="container-fluid">
 
-if ( have_posts () ) :
+    <?php
 
-    while( have_posts ()  ) :
+    if ( have_posts () ) :
 
-        the_post ();
+        while( have_posts ()  ) :
 
-?>
+            the_post ();
 
-    <h1><?php the_title (); ?></h1>
+    ?>
 
-    <div><?php the_content (); ?></div>
+        <h1><?php the_title (); ?></h1>
 
-<?php
+        <div><?php the_content (); ?></div>
 
-    endwhile;
+    <?php
 
-endif;
+        endwhile;
 
-?>
+    endif;
+
+    ?>
+
+</div>
 
 <?php get_footer (); ?>

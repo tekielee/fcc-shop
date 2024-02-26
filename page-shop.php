@@ -1,18 +1,25 @@
 <?php get_header (); ?>
 
+<div class="container-fluid">
+
 <?php
 
- $args = array (
+    get_template_part ( 'template-parts/slider-products' );
 
-     'category' => array ( 'hoodies' ),
-     'orderby'  => 'name',
- );
- $products = wc_get_products ( $args );
+    get_template_part ( 'template-parts/products' );
 
-echo '<pre>';
-print_r ( $products );
-echo '</pre>';
+    get_template_part ( 'template-parts/jumbotron' );
+
+    get_template_part ( 'template-parts/carousel-products' );
+
+    get_template_part ( 'template-parts/feature-products' );
+
+    get_template_part ( 'template-parts/feature-left' );
+
+    get_template_part ( 'template-parts/feature-right' );
 
 ?>
+
+</div>
 
 <?php get_footer (); ?>

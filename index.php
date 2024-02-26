@@ -2,21 +2,27 @@
 
 <div class="container-fluid">
 
-<?php
+    <?php
 
-    get_template_part ( 'template-parts/products' );
+    if ( have_posts () ) :
 
-    get_template_part ( 'template-parts/jumbotron' );
+        while( have_posts ()  ) :
 
-    get_template_part ( 'template-parts/carousel-products' );
+            the_post ();
 
-    get_template_part ( 'template-parts/feature-products' );
+    ?>
 
-    get_template_part ( 'template-parts/feature-left' );
+        <h1><?php the_title (); ?></h1>
 
-    get_template_part ( 'template-parts/feature-right' );
+        <div><?php the_content (); ?></div>
 
-?>
+    <?php
+
+        endwhile;
+
+    endif;
+
+    ?>
 
 </div>
 

@@ -48,10 +48,4 @@
 
         }
 
-        if ( ! is_page ( 'product' )) {
-
-            get_template_part ( 'template-parts/hero' );
-
-        }
-
     ?>

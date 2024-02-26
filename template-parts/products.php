@@ -46,7 +46,7 @@ for ( $i = 0; $i < sizeof ( $products ); $i++ ) {
 
                     <p class="card-text"><span class="fw-bold">Price:</span> <?php echo ' $' . $data['price'] ?></p>
 
-                    <a href="<?php echo get_site_url () . '/product/?product_id=' . $data['id'] ?>" class="btn btn-primary">Learn more</a>
+                    <a href="<?php echo get_site_url () . '/product-detail/?product_id=' . $data['id'] ?>" class="btn btn-primary">Learn more</a>
 
                 </div>
 

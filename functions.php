@@ -265,6 +265,14 @@ function add_specs_product_tab ( $tabs ) {
     return $tabs;
 }
 
+function display_specs_product_tab_content () {
+
+    global $product;
+
+    _e ( wp_unslash ( $product->get_meta ( 'specs' ) ) );
+
+}
+
 add_action ( 'add_meta_boxes', 'create_product_warranty_meta_box' );
 
 function create_product_warranty_meta_box () {
@@ -319,11 +327,19 @@ function add_warranty_product_tab ( $tabs ) {
 
         'priority'      => 50,
 
-        'callback'      => 'display_specs_product_tab_content'
+        'callback'      => 'display_warranty_product_tab_content'
 
     );
 
     return $tabs;
+}
+
+function display_warranty_product_tab_content () {
+
+    global $product;
+
+    _e ( wp_unslash ( $product->get_meta ( 'warranty' ) ) );
+
 }
 
 add_action ( 'add_meta_boxes', 'create_product_shipping_meta_box' );
@@ -380,11 +396,19 @@ function add_shipping_product_tab ( $tabs ) {
 
         'priority'      => 50,
 
-        'callback'      => 'display_specs_product_tab_content'
+        'callback'      => 'display_shipping_product_tab_content'
 
     );
 
     return $tabs;
+}
+
+function display_shipping_product_tab_content () {
+
+    global $product;
+
+    _e ( wp_unslash ( $product->get_meta ( 'shipping' ) ) );
+
 }
 
 
@@ -442,12 +466,20 @@ function add_seller_product_tab ( $tabs ) {
 
         'priority'      => 50,
 
-        'callback'      => 'display_specs_product_tab_content'
+        'callback'      => 'display_seller_product_tab_content'
 
     );
 
     return $tabs;
 }
 
+
+function display_seller_product_tab_content () {
+
+    global $product;
+
+    _e ( wp_unslash ( $product->get_meta ( 'seller' ) ) );
+
+}
 
 ?>

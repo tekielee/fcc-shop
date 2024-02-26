@@ -1,5 +1,5 @@
 <?php get_header (); ?>
 
-my account
+my cart
 
 <?php get_footer (); ?>

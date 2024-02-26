@@ -1,6 +1,6 @@
 <?php get_header (); ?>
 
-<div class="container-fluid">
+<div class="container-fluid pt-3">
 
     <?php
 
@@ -11,8 +11,6 @@
             the_post ();
 
     ?>
-
-        <h1><?php the_title (); ?></h1>
 
         <div><?php the_content (); ?></div>
 

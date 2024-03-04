@@ -13,8 +13,6 @@
 
         <link rel="stylesheet" href="<?php echo get_template_directory_uri () . '/css/bootstrap.min.css' ?>" />
 
-        <link rel="stylesheet" href="<?php echo get_template_directory_uri () . '/css/bootstrap-icons.min.css' ?>">
-
         <link rel="stylesheet" href="<?php echo get_template_directory_uri () . '/style.css' ?>" />
 
         <script type="text/javascript" src="<?php echo get_template_directory_uri () . '/js/bootstrap.min.js' ?>"></script>
@@ -36,6 +34,6 @@
 
     <?php
 
-            get_template_part ( 'template-parts/navbar-simple' );
+        get_template_part ( 'template-parts/navbar' );
 
     ?>

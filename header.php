@@ -21,7 +21,7 @@
 
 <body <?php body_class (); ?>>
 
-<div class="grid-container">
+<div class="grid-container fluid">
 
     <?php
 

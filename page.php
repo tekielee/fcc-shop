@@ -1,6 +1,6 @@
 <?php get_header (); ?>
 
-<div class="container-fluid pt-3">
+<div class="grid-container fluid">
 
     <?php
 

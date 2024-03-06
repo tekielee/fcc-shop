@@ -12,45 +12,68 @@
 
         <div class="top-bar" id="example-menu">
     
-            <div class="top-bar-left">
+            <div class="top-bar-left">  
 
-                <ul class="dropdown menu" data-dropdown-menu>
-        
-                    <li class="menu-text">Site Title</li>
+                <div class="grid-x">
 
-                    <?php
+                    <div class="large-2 cell">
+                    
+                        <span class="site-logo">
+                            
+                            <a href="<?php _e ( get_site_url () ); ?>">
 
-                        if ( ! has_nav_menu ( 'primary' ) ) {
-
-                            $pages = get_pages ();
-
-                            foreach ( $pages as $page ) {
-
-                        ?>
-                                <li class="nav-item">
-
-                                    <a class="nav-link" href=" <?php _e ( get_page_link( $page->ID ) ); ?>">
-
-                                        <?php _e ( $page->post_title ); ?>
-
-                                    </a>
-
-                                </li>
-
-                        <?php
+                                <img src="<?php _e ( get_template_directory_uri () . '/images/logo.png' ); ?>" alt="Logo"
+                                
+                                width="50" height="50" /
+                                
+                                >
+                            
+                            </a>
                         
-                            }
+                        </span>
 
-                        } else {
+                    </div>
 
-                        _e ( createMmenu ( getMenu () ) );
+                    <div class="large-9 cell">
+                        <ul class="dropdown menu align-center" data-dropdown-menu>
 
-                        }
+                            <?php
 
-                    ?>
+                                if ( ! has_nav_menu ( 'primary' ) ) {
+
+                                    $pages = get_pages ();
+
+                                    foreach ( $pages as $page ) {
+
+                                ?>
+                                        <li class="nav-item">
+
+                                            <a class="nav-link" href=" <?php _e ( get_page_link( $page->ID ) ); ?>">
+
+                                                <?php _e ( $page->post_title ); ?>
+
+                                            </a>
+
+                                        </li>
+
+                                <?php
+                                
+                                    }
+
+                                } else {
+
+                                _e ( createMmenu ( getMenu () ) );
+
+                                }
+
+                            ?>
+                
+                        </ul>
+
+                    </div>
+
+                </div>
         
-                </ul>
-
             </div>
 
             <div class="top-bar-right">

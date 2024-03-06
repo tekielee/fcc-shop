@@ -12,7 +12,7 @@ if ( ! function_exists ( 'register_my_menu' ) ) {
 
 }
 
-add_action ( 'admin_enqueue_scripts', 'bootstrap_woocommerce_scripts' );
+//add_action ( 'admin_enqueue_scripts', 'bootstrap_woocommerce_scripts' );
 
 if ( ! function_exists ( 'bootstrap_woocommerce_scripts' ) ) {
 
@@ -26,71 +26,32 @@ if ( ! function_exists ( 'bootstrap_woocommerce_scripts' ) ) {
 
 }
 
-if ( ! function_exists ( 'getMenu' ) ) {
-
-    function getMenu ( ) {
-
-        if ( has_nav_menu ( 'primary' ) ) {
-
-            $theme_location = wp_get_nav_menu_name ( 'primary' );
-
-            $menu_items = wp_get_nav_menu_items ( $theme_location );
-
-      	         function buildMenu ( $ID, $menu_items ) {
-
-    	             $menu = array ();
-
-    	             foreach ( $menu_items as $menu_item ) {
-
-                         if ( ( int ) $menu_item->menu_item_parent === $ID )  {
-
-                             $menu[ $menu_item->title ] = array (
-
-    		                      'url'      => $menu_item->url,
-
-    		                      'children' => buildMenu ( $menu_item->ID, $menu_items )
-
-                              );
-
-                         }
-
-    	             }
-
-    	             return $menu;
-                 }
-
-            return buildMenu ( 0, $menu_items );
-
-        }
-
-    }
-
-}
-
 // Create a bootstrap menu hierarchy from the getMenu function
-if ( ! function_exists ( 'createBootstrapMmenu' ) ) {
+if ( ! function_exists ( 'createMmenu' ) ) {
 
-    function createBootstrapMmenu ( $menu ) {
+    function createMmenu ( $menu ) {
 
-        $html = '<ul>';
+        $html = '';
 
         foreach ( $menu as $key => $value ) {
 
             $html .= '<li>';
 
-            $html .= '<a class="nav-link" href="' . $value['url'] . '">' . $key . '</a>';
+            $html .= '<a href="' . $value['url'] . '">' . $key . '</a>';
 
             if ( ! empty ( $value['children'] ) ) {
 
-                $html .= createBootstrapMmenu ( $value['children'] );
+                $html .= '<ul class="menu">';
+
+                $html .= createMmenu ( $value['children'] );
+
+                $html .= '</ul>';
 
             }
 
             $html .= '</li>';
 
         }
-
-        $html .= '</ul>';
 
         return $html;
 
@@ -563,6 +524,47 @@ if ( ! function_exists ( 'hubspot_subscriber' ) ) {
         return $response;
 
     }
+}
+
+if ( ! function_exists ( 'getMenu' ) ) {
+
+    function getMenu ( ) {
+
+        if ( has_nav_menu ( 'primary' ) ) {
+
+            $theme_location = wp_get_nav_menu_name ( 'primary' );
+
+            $menu_items = wp_get_nav_menu_items ( $theme_location );
+
+      	         function buildMenu ( $ID, $menu_items ) {
+
+    	             $menu = array ();
+
+    	             foreach ( $menu_items as $menu_item ) {
+
+                         if ( ( int ) $menu_item->menu_item_parent === $ID )  {
+
+                             $menu[ $menu_item->title ] = array (
+
+    		                      'url'      => $menu_item->url,
+
+    		                      'children' => buildMenu ( $menu_item->ID, $menu_items )
+
+                              );
+
+                         }
+
+    	             }
+
+    	             return $menu;
+                 }
+
+            return buildMenu ( 0, $menu_items );
+
+        }
+
+    }
+
 }
 
 if ( ! function_exists ( 'generateMenuHiarchy' ) ) {

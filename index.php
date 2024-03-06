@@ -1,7 +1,6 @@
 <?php get_header (); ?>
 
-<div class="container-fluid">
-    
+<div class="grid-container">    
     <?php
 
     if ( have_posts () ) :

@@ -21,10 +21,10 @@
 
 <body <?php body_class (); ?>>
 
+<?php
+
+get_template_part ( 'template-parts/navbar' );
+
+?>
+
 <div class="grid-container fluid">
-
-    <?php
-
-        get_template_part ( 'template-parts/navbar' );
-
-    ?>

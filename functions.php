@@ -12,15 +12,30 @@ if ( ! function_exists ( 'register_my_menu' ) ) {
 
 }
 
-//add_action ( 'admin_enqueue_scripts', 'bootstrap_woocommerce_scripts' );
+add_action ( 'admin_enqueue_scripts', 'woocommerce_scripts' );
 
-if ( ! function_exists ( 'bootstrap_woocommerce_scripts' ) ) {
 
-    function bootstrap_woocommerce_scripts () {
+if ( ! function_exists ( 'woocommerce_scripts' ) ) {
 
-        wp_enqueue_style ( 'bootstrap-woocommerce-bootstrap', get_template_directory_uri () . '/css/bootstrap.min.css', array(), '5.0.0' );
+    function woocommerce_scripts ( $hook ) {
 
-        wp_enqueue_script ( 'bootstrap-woocommerce-bootstrap', get_template_directory_uri () . '/js/bootstrap.min.js', array(), '5.0.0', true );
+        if ( $hook != 'toplevel_page_custompage' ) {
+
+            return;
+
+        }
+
+        wp_enqueue_style ( 'woocommerce-foundation', get_template_directory_uri () . '/css/foundation.min.css', array(), '5.0.0' );
+
+        wp_enqueue_style ( 'woocommerce-app-admin', get_template_directory_uri () . '/css/app-admin.css', array(), '5.0.0' );
+
+        wp_enqueue_script ( 'woocommerce-jquery', get_template_directory_uri () . '/js/vendor/jquery.js', array(), '5.0.0', true );
+
+        wp_enqueue_script ( 'woocommerce-what-input', get_template_directory_uri () . '/js/vendor/what-input.js', array(), '5.0.0', true );
+
+        wp_enqueue_script ( 'woocommerce-foundation-js', get_template_directory_uri () . '/js/vendor/foundation.min.js', array(), '5.0.0', true );
+
+        wp_enqueue_script ( 'woocommerce-app-admin', get_template_directory_uri () . '/js/app-admin.js', array(), '5.0.0', true );
 
     }
 
@@ -60,23 +75,23 @@ if ( ! function_exists ( 'createMmenu' ) ) {
 }
 
 
-if ( ! function_exists ( 'bwct_menu' ) ) {
+if ( ! function_exists ( 'fwct_menu' ) ) {
 
-    function bwct_menu () {
+    function fwct_menu () {
 
     	add_menu_page (
 
-    		__( 'Bootstrap WC Theme', 'textdomain' ),
+    		__( 'Foundation WC Theme', 'textdomain' ),
 
-    		'Bootstrap WC Theme',
+    		'Foundation WC Theme',
 
     		'manage_options',
 
     		'custompage',
 
-            'bwct_menu_page',
+            'fwct_menu_page',
 
-            get_template_directory_uri () . '/images/bwct_icon.png'
+            get_template_directory_uri () . '/images/fwct_icon.png'
 
     	);
 
@@ -84,13 +99,13 @@ if ( ! function_exists ( 'bwct_menu' ) ) {
 
 }
 
-add_action ( 'admin_menu', 'bwct_menu' );
+add_action ( 'admin_menu', 'fwct_menu' );
 
-if ( ! function_exists ( 'bwct_menu_page' ) ) {
+if ( ! function_exists ( 'fwct_menu_page' ) ) {
 
-    function bwct_menu_page () {
+    function fwct_menu_page () {
 
-    	_e ( 'hi' );
+    	_e ( 'Foundation' );
 
     }
 

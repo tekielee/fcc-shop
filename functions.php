@@ -105,7 +105,43 @@ if ( ! function_exists ( 'fwct_menu_page' ) ) {
 
     function fwct_menu_page () {
 
-    	_e ( 'Foundation' );
+    	$accordion = '
+
+            <div class="grid-container fluid">
+
+                <ul class="accordion" data-responsive-accordion-tabs="accordion medium-tabs large-accordion">
+                
+                    <li class="accordion-item is-active" data-accordion-item>
+                
+                        <a href="#" class="accordion-title">Header Settings</a>
+
+                        <div class="accordion-content" data-tab-content>
+
+                            Header customization
+                
+                        </div>
+                
+                    </li>
+            
+                    <li class="accordion-item" data-accordion-item>
+                
+                        <a href="#" class="accordion-title">Footer Settings</a>
+
+                        <div class="accordion-content" data-tab-content>
+
+                            Footer customization
+                
+                        </div>
+                
+                    </li>
+
+                </ul>
+                
+            </div>
+            
+        ';
+
+        _e ( $accordion );
 
     }
 

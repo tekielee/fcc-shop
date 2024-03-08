@@ -4,7 +4,42 @@ $(document).ready(function() {
 
     getUploadLogoUrl ();
     
+    ajaxSaveLogoUrl ( ajaxurl );
+
 });
+
+function ajaxSaveLogoUrl ( ajaxurl ) {
+
+    jQuery('#save-logo-url').click ( function ( e ) {
+
+        e.preventDefault();
+
+        let logo_url = jQuery('#img-upload-url').val();
+
+        jQuery.ajax ( {
+
+            url: ajaxurl,
+
+            type: 'POST',
+
+            data: {
+
+                action: 'logo_url',
+
+                logo_url: logo_url,
+            },
+
+            success: function ( response ) {
+
+                console.log('The server responded: ', response);
+
+            }
+
+        } );
+
+    } );
+
+}
 
 function getUploadLogoUrl () {
 
@@ -16,7 +51,7 @@ function getUploadLogoUrl () {
 
         title:'Choose Image Logo', 
 
-        multiple:false
+        multiple: false
 
         } ).on ( 'select' , function () {
 
@@ -27,7 +62,7 @@ function getUploadLogoUrl () {
             jQuery('#img-upload-url').val( attach.url );
 
         }).open ();
-        
+
    });
 
 }

@@ -76,6 +76,17 @@ if ( ! function_exists ( 'createMmenu' ) ) {
 
 }
 
+add_action( 'wp_ajax_logo_url', 'ajax_logo_url_handler' );
+
+function ajax_logo_url_handler () {
+    
+    update_option ( 'logo_url', $_POST['logo_url'] );
+
+    echo 'Logo URL has been updated successfully';
+
+    wp_die();
+}
+
 
 if ( ! function_exists ( 'fwct_menu' ) ) {
 
@@ -119,7 +130,18 @@ if ( ! function_exists ( 'fwct_menu_page' ) ) {
 
                         <div class="accordion-content" data-tab-content>
 
-                            <label>Logo Url</label><input id="img-upload-url" type="text" name="logo-url" placeholder="Logo URL" />
+                            <label>Logo Url</label>
+                                <input 
+                                
+                                    id="img-upload-url" 
+                                    
+                                    type="text" name="logo-url" 
+                                    
+                                    placeholder="Logo URL" 
+
+                                    value="' . wp_unslash ( get_option ( 'logo_url' ) ) . '"
+                                
+                                />
 
                             <a id="img-upload" class="button primary" href="javascript:void(0);">Upload</a>
 

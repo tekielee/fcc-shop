@@ -22,7 +22,23 @@
                             
                             <a href="<?php _e ( get_site_url () ); ?>">
 
-                                <img src="<?php _e ( get_template_directory_uri () . '/images/logo.png' ); ?>" alt="Logo"
+                                <img src="
+                                
+                                <?php 
+                                    
+                                    $logo_url = get_template_directory_uri () . '/images/logo.png';
+
+                                    if ( get_option ( 'logo_url' ) ) {
+
+                                        $logo_url = get_option ( 'logo_url' );
+
+                                    }
+
+                                    _e ( $logo_url );
+                                    
+                                ?>" 
+                                
+                                alt="Logo"
                                 
                                 width="50" height="50" /
                                 

@@ -130,6 +130,8 @@ if ( ! function_exists ( 'fwct_menu_page' ) ) {
 
                         <div class="accordion-content" data-tab-content>
 
+                            <div id="logo-url-message"></div>
+
                             <label>Logo Url</label>
                                 <input 
                                 

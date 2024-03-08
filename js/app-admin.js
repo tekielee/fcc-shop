@@ -31,7 +31,13 @@ function ajaxSaveLogoUrl ( ajaxurl ) {
 
             success: function ( response ) {
 
-                console.log('The server responded: ', response);
+                let message = '<div class="callout success" data-closable="slide-out-right">' + 
+                
+                    response + '<button class="close-button" aria-label="Dismiss alert" ' + 
+                    
+                    'type="button" data-close><span aria-hidden="true">&times;</span></button></div>';
+
+                jQuery ( '#logo-url-message' ).html( message );
 
             }
 

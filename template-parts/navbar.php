@@ -30,7 +30,7 @@
 
                                     if ( get_option ( 'logo_url' ) ) {
 
-                                        $logo_url = get_option ( 'logo_url' );
+                                        $logo_url = wp_unslash ( get_option ( 'logo_url' ) );
 
                                     }
 

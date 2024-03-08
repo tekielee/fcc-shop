@@ -76,6 +76,36 @@ if ( ! function_exists ( 'createMmenu' ) ) {
 
 }
 
+add_action( 'wp_ajax_instagram_url', 'ajax_instagram_url_handler' );
+
+if ( !function_exists ( 'ajax_instagram_url_handler' ) ) {
+
+    function ajax_instagram_url_handler () {
+        
+        update_option ( 'instagram_url', $_POST['instagram_url'] );
+
+        echo 'Instagram URL has been updated successfully';
+
+        wp_die();
+    }
+
+}
+
+add_action( 'wp_ajax_twitter_url', 'ajax_twitter_url_handler' );
+
+if ( !function_exists ( 'ajax_twitter_url_handler' ) ) {
+
+    function ajax_twitter_url_handler () {
+        
+        update_option ( 'twitter_url', $_POST['twitter_url'] );
+
+        echo 'Twitter URL has been updated successfully';
+
+        wp_die();
+    }
+
+}
+
 add_action( 'wp_ajax_youtube_url', 'ajax_youtube_url_handler' );
 
 if ( !function_exists ( 'ajax_youtube_url_handler' ) ) {
@@ -232,7 +262,7 @@ if ( ! function_exists ( 'fwct_menu_page' ) ) {
                                     <button id="save-youtube-url" class="submit success button">Save</button>
 
                                     <br/><br/>
-                                    
+
                                     <div id="twitter-url-message"></div>
 
                                     <label>Twitter URL</label>
@@ -250,6 +280,26 @@ if ( ! function_exists ( 'fwct_menu_page' ) ) {
                                     />
 
                                     <button id="save-twitter-url" class="submit success button">Save</button>
+
+                                    <br/><br/>
+
+                                    <div id="instagram-url-message"></div>
+
+                                    <label>Instagram URL</label>
+
+                                    <input 
+                                
+                                        id="instagram-url" 
+                                        
+                                        type="text" name="instagram-url" 
+                                        
+                                        placeholder="Instagram URL" 
+
+                                        value="' . wp_unslash ( get_option ( 'instagram_url' ) ) . '"
+                                
+                                    />
+
+                                    <button id="save-instagram-url" class="submit success button">Save</button>
                             
                                 </div>
                         

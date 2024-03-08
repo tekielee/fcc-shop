@@ -10,7 +10,89 @@ $(document).ready(function() {
 
     ajaxSaveYoutubeUrl ( ajaxurl );
 
+    ajaxTwitterUrl ( ajaxurl );
+
+    ajaxInstagramUrl ( ajaxurl );
+
 });
+
+function ajaxInstagramUrl ( ajaxurl ) {
+
+    $('#save-instagram-url').click ( function ( e ) {
+        
+        e.preventDefault();
+
+        let instagram_url = jQuery('#instagram-url').val();
+
+        jQuery.ajax ( {
+
+            url: ajaxurl,
+
+            type: 'POST',
+
+            data: {
+
+                action: 'instagram_url',
+
+                instagram_url: instagram_url,
+            },
+
+            success: function ( response ) {
+
+                let message = '<div class="callout success" data-closable="slide-out-right">' + 
+                
+                    response + '<button class="close-button" aria-label="Dismiss alert" ' + 
+                    
+                    'type="button" data-close><span aria-hidden="true">&times;</span></button></div>';
+
+                jQuery ( '#instagram-url-message' ).html( message );
+
+            }
+
+        } );
+
+    } );
+
+}
+
+function ajaxTwitterUrl ( ajaxurl ) {
+
+    $('#save-twitter-url').click ( function ( e ) {
+        
+        e.preventDefault();
+
+        let twitter_url = jQuery('#twitter-url').val();
+
+        jQuery.ajax ( {
+
+            url: ajaxurl,
+
+            type: 'POST',
+
+            data: {
+
+                action: 'twitter_url',
+
+                twitter_url: twitter_url,
+            },
+
+            success: function ( response ) {
+
+                let message = '<div class="callout success" data-closable="slide-out-right">' + 
+                
+                    response + '<button class="close-button" aria-label="Dismiss alert" ' + 
+                    
+                    'type="button" data-close><span aria-hidden="true">&times;</span></button></div>';
+
+                jQuery ( '#twitter-url-message' ).html( message );
+
+            }
+
+        } );
+
+    } );
+
+}
 
 function ajaxSaveYoutubeUrl ( ajaxurl ) {
 

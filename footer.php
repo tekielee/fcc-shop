@@ -22,6 +22,11 @@
 
             _e ( wp_unslash ( get_option ( 'youtube_url' ) ) );
 
+            _e ( wp_unslash ( get_option ( 'twitter_url' ) ) );
+
+            _e ( wp_unslash ( get_option ( 'instagram_url' ) ) );
+
+
         ?>
 
     </div>

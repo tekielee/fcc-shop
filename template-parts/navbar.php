@@ -10,7 +10,7 @@
 
         </div>
 
-        <div class="top-bar" id="example-menu">
+        <div class="top-bar" id="main-menu">
     
             <div class="top-bar-left">  
 
@@ -94,13 +94,45 @@
 
             <div class="top-bar-right">
 
-                <ul class="menu">
-                
-                    <li><input type="search" placeholder="Search"></li>
+                <div class="grid-x fluid">
 
-                    <li><button type="button" class="button">Search</button></li>
+                    <div class="large-12 cell">
 
-                </ul>
+                        <div class="large-6 cell">
+
+                            <ul class="menu">
+                            
+                                <li><input type="search" placeholder="Search"></li>
+
+                                <li><button type="button" class="button">Search</button></li>
+
+                            </ul>
+
+                        </div>
+
+                        <div class="large-6 cell">
+
+                            <ul class="menu">
+
+                                <li><a href="<?php _e ( get_site_url () . '/cart' ); ?>">
+                                    
+                                    <i class="fi-shopping-cart cart-icon"></i></a>
+                                
+                                </li>
+
+                                <li class="cart-count">
+                                        
+                                    <?php _e ( WC()->cart->get_cart_contents_count() ) ?>
+                                
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
             
             </div>
 

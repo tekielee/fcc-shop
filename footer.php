@@ -44,6 +44,8 @@
 
                         </div>
 
+                        <div id="subscriber-message"></div>
+
                     </div>
 
                     <div class="large-4 cell"></div>

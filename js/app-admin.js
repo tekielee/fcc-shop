@@ -6,7 +6,89 @@ $(document).ready(function() {
     
     ajaxSaveLogoUrl ( ajaxurl );
 
+    ajaxSaveLeftFooter ( ajaxurl );
+
+    ajaxSaveYoutubeUrl ( ajaxurl );
+
 });
+
+function ajaxSaveYoutubeUrl ( ajaxurl ) {
+
+    $('#save-youtube-url').click ( function ( e ) {
+        
+        e.preventDefault();
+
+        let youtube_url = jQuery('#youtube-url').val();
+
+        jQuery.ajax ( {
+
+            url: ajaxurl,
+
+            type: 'POST',
+
+            data: {
+
+                action: 'youtube_url',
+
+                youtube_url: youtube_url,
+            },
+
+            success: function ( response ) {
+
+                let message = '<div class="callout success" data-closable="slide-out-right">' + 
+                
+                    response + '<button class="close-button" aria-label="Dismiss alert" ' + 
+                    
+                    'type="button" data-close><span aria-hidden="true">&times;</span></button></div>';
+
+                jQuery ( '#youtube-url-message' ).html( message );
+
+            }
+
+        } );
+
+    } );
+
+}
+
+function ajaxSaveLeftFooter ( ajaxurl ) {
+
+    $('#save-left-footer').click ( function ( e ) {
+        
+        e.preventDefault();
+
+        let left_footer = jQuery('#left-footer').val();
+
+        jQuery.ajax ( {
+
+            url: ajaxurl,
+
+            type: 'POST',
+
+            data: {
+
+                action: 'left_footer',
+
+                left_footer: left_footer,
+            },
+
+            success: function ( response ) {
+
+                let message = '<div class="callout success" data-closable="slide-out-right">' + 
+                
+                    response + '<button class="close-button" aria-label="Dismiss alert" ' + 
+                    
+                    'type="button" data-close><span aria-hidden="true">&times;</span></button></div>';
+
+                jQuery ( '#left-footer-message' ).html( message );
+
+            }
+
+        } );
+
+    } );
+
+}
 
 function ajaxSaveLogoUrl ( ajaxurl ) {
 

@@ -76,15 +76,49 @@ if ( ! function_exists ( 'createMmenu' ) ) {
 
 }
 
+add_action( 'wp_ajax_youtube_url', 'ajax_youtube_url_handler' );
+
+if ( !function_exists ( 'ajax_youtube_url_handler' ) ) {
+
+    function ajax_youtube_url_handler () {
+        
+        update_option ( 'youtube_url', $_POST['youtube_url'] );
+
+        echo 'Youtube URL has been updated successfully';
+
+        wp_die();
+    }
+
+}
+
+add_action( 'wp_ajax_left_footer', 'ajax_left_footer_handler' );
+
+if ( !function_exists ( 'ajax_left_footer_handler' ) ) {
+
+    function ajax_left_footer_handler () {
+        
+        update_option ( 'left_footer', $_POST['left_footer'] );
+
+        echo 'Left footer has been updated successfully';
+
+        wp_die();
+    }
+
+}
+
 add_action( 'wp_ajax_logo_url', 'ajax_logo_url_handler' );
 
-function ajax_logo_url_handler () {
-    
-    update_option ( 'logo_url', $_POST['logo_url'] );
+if ( !function_exists ( 'ajax_logo_url_handler' ) ) {
 
-    echo 'Logo URL has been updated successfully';
+    function ajax_logo_url_handler () {
+        
+        update_option ( 'logo_url', $_POST['logo_url'] );
 
-    wp_die();
+        echo 'Logo URL has been updated successfully';
+
+        wp_die();
+    }
+
 }
 
 
@@ -159,7 +193,68 @@ if ( ! function_exists ( 'fwct_menu_page' ) ) {
 
                         <div class="accordion-content" data-tab-content>
 
-                            Footer customization
+                            <div class="grid-x">
+
+                                <div class="large-6 cell">
+
+                                    <div id="left-footer-message"></div>
+
+                                    <label>Left Footer</label>
+
+                                    <textarea id="left-footer" name="left-footer" rows="10">' . 
+                                    
+                                        wp_unslash ( get_option ( 'left_footer' ) )
+                                    
+                                    . '</textarea>
+
+                                    <button id="save-left-footer" class="submit success button">Save</button>
+                            
+                                </div>
+                            
+                                <div class="large-6 cell">
+
+                                    <div id="youtube-url-message"></div>
+
+                                    <label>Youtube URL</label>
+
+                                    <input 
+                                
+                                        id="youtube-url" 
+                                        
+                                        type="text" name="youtube-url" 
+                                        
+                                        placeholder="Youtube URL" 
+
+                                        value="' . wp_unslash ( get_option ( 'youtube_url' ) ) . '"
+                                
+                                    />
+
+                                    <button id="save-youtube-url" class="submit success button">Save</button>
+
+                                    <br/><br/>
+                                    
+                                    <div id="twitter-url-message"></div>
+
+                                    <label>Twitter URL</label>
+
+                                    <input 
+                                
+                                        id="twitter-url" 
+                                        
+                                        type="text" name="twitter-url" 
+                                        
+                                        placeholder="Twitter URL" 
+
+                                        value="' . wp_unslash ( get_option ( 'twitter_url' ) ) . '"
+                                
+                                    />
+
+                                    <button id="save-twitter-url" class="submit success button">Save</button>
+                            
+                                </div>
+                        
+                            </div>
+                    
                 
                         </div>
                 

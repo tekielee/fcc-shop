@@ -25,6 +25,8 @@ if ( ! function_exists ( 'woocommerce_scripts' ) ) {
 
         }
 
+        wp_enqueue_media();
+
         wp_enqueue_style ( 'woocommerce-foundation', get_template_directory_uri () . '/css/foundation.min.css', array(), '5.0.0' );
 
         wp_enqueue_style ( 'woocommerce-app-admin', get_template_directory_uri () . '/css/app-admin.css', array(), '5.0.0' );
@@ -117,7 +119,11 @@ if ( ! function_exists ( 'fwct_menu_page' ) ) {
 
                         <div class="accordion-content" data-tab-content>
 
-                            Header customization
+                            <label>Logo Url</label><input id="img-upload-url" type="text" name="logo-url" placeholder="Logo URL" />
+
+                            <a id="img-upload" class="button primary" href="javascript:void(0);">Upload</a>
+
+                            <button id="save-logo-url" class="submit success button">Save</button>
                 
                         </div>
                 

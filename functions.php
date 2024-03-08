@@ -43,7 +43,22 @@ if ( ! function_exists ( 'woocommerce_scripts' ) ) {
 
 }
 
-// Create a bootstrap menu hierarchy from the getMenu function
+if ( !function_exists ( 'search' ) ) {
+
+    function search ( $search ) {
+
+        global $wpdb;
+
+        $query = "SELECT * FROM " . $wpdb->prefix . "posts WHERE post_title LIKE '%" . $search . "%'";
+
+        $results = $wpdb->get_results ( $query );
+
+        return $results;
+
+    }
+
+}
+
 if ( ! function_exists ( 'createMmenu' ) ) {
 
     function createMmenu ( $menu ) {

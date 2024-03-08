@@ -2,9 +2,9 @@
 
     <div class="large-12 cell">
 
-        <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+        <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium">
 
-            <button class="menu-icon" type="button" data-toggle="example-menu"></button>
+            <button class="menu-icon" type="button" data-toggle="main-menu"></button>
 
             <div class="title-bar-title">Menu</div>
 
@@ -100,13 +100,19 @@
 
                         <div class="large-6 cell">
 
-                            <ul class="menu">
-                            
-                                <li><input type="search" placeholder="Search"></li>
+                            <form action="<?php _e ( get_site_url () . '/search'); ?>" method="POST">
 
-                                <li><button type="button" class="button">Search</button></li>
+                                <ul class="menu">
 
-                            </ul>
+                                    <li><input type="text" name="search" placeholder="Search"></li>
+
+                                    <li><button type="submit" class="button">Search</button></li>
+
+                                    
+
+                                </ul>
+
+                            </form>
 
                         </div>
 

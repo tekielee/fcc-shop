@@ -1,6 +1,7 @@
 <?php get_header (); ?>
 
 <div class="grid-container fluid">
+
     <?php
 
     if ( have_posts () ) :
@@ -11,7 +12,11 @@
 
     ?>
 
+        <div>
+            
         <div><?php the_content (); ?></div>
+    
+        </div>
 
     <?php
 

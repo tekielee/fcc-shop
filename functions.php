@@ -27,17 +27,17 @@ if ( ! function_exists ( 'woocommerce_scripts' ) ) {
 
         wp_enqueue_media();
 
-        wp_enqueue_style ( 'woocommerce-foundation', get_template_directory_uri () . '/css/foundation.min.css', array(), '5.0.0' );
+        wp_enqueue_style ( 'cl-woocommerce-foundation', get_template_directory_uri () . '/css/foundation.min.css', array(), '5.0.0' );
 
-        wp_enqueue_style ( 'woocommerce-app-admin', get_template_directory_uri () . '/css/app-admin.css', array(), '5.0.0' );
+        wp_enqueue_style ( 'cl-woocommerce-app-admin', get_template_directory_uri () . '/css/app-admin.css', array(), '5.0.0' );
 
-        wp_enqueue_script ( 'woocommerce-jquery', get_template_directory_uri () . '/js/vendor/jquery.js', array(), '5.0.0', true );
+        wp_enqueue_script ( 'cl-woocommerce-jquery', get_template_directory_uri () . '/js/vendor/jquery.js', array(), '5.0.0', true );
 
-        wp_enqueue_script ( 'woocommerce-what-input', get_template_directory_uri () . '/js/vendor/what-input.js', array(), '5.0.0', true );
+        wp_enqueue_script ( 'cl-woocommerce-what-input', get_template_directory_uri () . '/js/vendor/what-input.js', array(), '5.0.0', true );
 
-        wp_enqueue_script ( 'woocommerce-foundation-js', get_template_directory_uri () . '/js/vendor/foundation.min.js', array(), '5.0.0', true );
+        wp_enqueue_script ( 'cl-woocommerce-foundation-js', get_template_directory_uri () . '/js/vendor/foundation.min.js', array(), '5.0.0', true );
 
-        wp_enqueue_script ( 'woocommerce-app-admin', get_template_directory_uri () . '/js/app-admin.js', array(), '5.0.0', true );
+        wp_enqueue_script ( 'cl-woocommerce-app-admin', get_template_directory_uri () . '/js/app-admin.js', array(), '5.0.0', true );
 
     }
 

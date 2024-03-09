@@ -1,4 +1,4 @@
-=== Foundation WooCommerce ===
+=== Foundation Woocommerce ===
 
 Contributors: Cuong Le
 

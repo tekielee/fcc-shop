@@ -1,11 +1,13 @@
-/**
- * Theme Name: Foundation Woocommerce
- * Author: Cuong Le
- * Author URI: https://github.com/tekielee/bootstrap-woocommerce-theme
- * Description: Four Additional WooCommerce Tabs: Specification, Warranty, Shipping Info, and Seller Info. Hubspot subscriber form.
- * Version: 1.0
- * License: GNU General Public License v2 or later
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: foundation-woocommerce-theme
- * Tags: woococommerce-specification, woococommerce-warranty, woococommerce-shipping-info, woococommerce-seller-info, woococommerce-hubspot
+/*
+Theme Name: Foundation Woocommerce
+Author: Cuong Le
+Author URI: https://github.com/tekielee/bootstrap-woocommerce-theme
+Description: Four Additional WooCommerce Tabs: Specification, Warranty, Shipping Info, and Seller Info. Hubspot subscriber form.
+Version: 1.0
+Tested up to: 5.8
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: foundation-woocommerce
+Tags: woococommerce-specification, woococommerce-warranty, woococommerce-shipping-info, woococommerce-seller-info, woococommerce-hubspot
  */

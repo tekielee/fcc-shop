@@ -12,7 +12,11 @@
 
     ?>
 
+    <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
         <div><?php the_content (); ?></div>
+
+    </div>
 
     <?php
 
@@ -21,6 +25,8 @@
     endif;
 
     ?>
+
+    <?php wp_link_pages(); ?>
 
 </div>
 

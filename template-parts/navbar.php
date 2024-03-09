@@ -100,7 +100,7 @@
 
                         <div class="large-6 cell">
 
-                            <form action="<?php _e ( get_site_url () . '/search'); ?>" method="POST">
+                            <form action="<?php _e ( get_site_url () . '/search', 'foundation-woocommerce' ); ?>" method="POST">
 
                                 <ul class="menu">
 
@@ -120,7 +120,7 @@
 
                             <ul class="menu">
 
-                                <li><a href="<?php _e ( get_site_url () . '/cart' ); ?>">
+                                <li><a href="<?php _e ( get_site_url () . '/cart', 'foundation-woocommerce' ); ?>">
                                     
                                     <i class="fi-shopping-cart cart-icon"></i></a>
                                 

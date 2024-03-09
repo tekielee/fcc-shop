@@ -1,19 +1,24 @@
 <?php
 
-add_action( 'after_setup_theme', 'register_my_menu' );
+add_action( 'after_setup_theme', 'foundation_wooocommerce_setup' );
 
-if ( ! function_exists ( 'register_my_menu' ) ) {
+if ( ! function_exists ( 'foundation_wooocommerce_setup' ) ) {
 
-    function register_my_menu () {
+    function foundation_wooocommerce_setup () {
 
-        register_nav_menu ( 'primary', __( 'Primary Menu', 'foundation-woocommerce' ) );
+        add_theme_support( 'automatic-feed-links' );
+
+        load_theme_textdomain( 'foundation-woocommerce' );
+
+        add_theme_support( 'title-tag' );
+
+        register_nav_menu ( 'primary', __( 'Primary', 'foundation-woocommerce' ) );
 
     }
 
 }
 
 add_action ( 'admin_enqueue_scripts', 'woocommerce_scripts' );
-
 
 if ( ! function_exists ( 'woocommerce_scripts' ) ) {
 
@@ -203,7 +208,7 @@ if ( ! function_exists ( 'fwct_menu' ) ) {
 
     	add_menu_page (
 
-    		__( 'Foundation WC Theme', 'textdomain' ),
+    		__( 'Foundation WC Theme', 'foundation-woocommerce' ),
 
     		'Foundation WC Theme',
 
@@ -450,7 +455,7 @@ if ( ! function_exists ( 'create_product_specs_meta_box' ) ) {
 
             'custom_product_specs_meta_box',
 
-            __( 'Specification', 'specs' ),
+            __( 'Specification', 'foundation-woocommerce' ),
 
             'add_specs_meta_box',
 
@@ -474,11 +479,11 @@ if ( ! function_exists ( 'add_specs_meta_box' ) ) {
 
         $content = wp_unslash ( $product->get_meta ( 'specs' ) );
 
-        _e ( '<div class="product_specs">' );
+        _e ( '<div class="product_specs">', 'foundation-woocommerce' );
 
         wp_editor ( $content, 'specs', ['textarea_rows' => 10]);
 
-        _e ( '</div>' );
+        _e ( '</div>', 'foundation-woocommerce' );
 
     }
 
@@ -507,7 +512,7 @@ if ( ! function_exists ( 'add_specs_product_tab' ) ) {
 
         $tabs ['specs_tab'] = array (
 
-            'title'         => __( 'Specification', 'specs' ),
+            'title'         => __( 'Specification', 'foundation-woocommerce' ),
 
             'priority'      => 50,
 
@@ -527,7 +532,7 @@ if ( ! function_exists ( 'display_specs_product_tab_content' ) ) {
 
         global $product;
 
-        _e ( wp_unslash ( $product->get_meta ( 'specs' ) ) );
+        _e ( wp_unslash ( $product->get_meta ( 'specs' ) ), 'foundation-woocommerce' );
 
     }
 
@@ -543,7 +548,7 @@ if ( ! function_exists ( 'create_product_warranty_meta_box' ) ) {
 
             'custom_product_warranty_meta_box',
 
-            __( 'Warranty Info', 'warranty' ),
+            __( 'Warranty Info', 'foundation-woocommerce' ),
 
             'add_warranty_meta_box',
 
@@ -567,11 +572,11 @@ if ( ! function_exists ( 'add_warranty_meta_box' ) ) {
 
         $content = wp_unslash ( $product->get_meta ( 'warranty' ) );
 
-        _e ( '<div class="product_warranty">' );
+        _e ( '<div class="product_warranty">', 'foundation-woocommerce' );
 
         wp_editor ( $content, 'warranty', ['textarea_rows' => 10]);
 
-        _e ( '</div>' );
+        _e ( '</div>', 'foundation-woocommerce' );
 
     }
 
@@ -599,7 +604,7 @@ if ( ! function_exists ( 'add_warranty_product_tab' ) ) {
 
         $tabs ['warranty_tab'] = array (
 
-            'title'         => __( 'Warranty Info', 'warranty' ),
+            'title'         => __( 'Warranty Info', 'foundation-woocommerce' ),
 
             'priority'      => 50,
 
@@ -618,7 +623,7 @@ if ( ! function_exists ( 'display_warranty_product_tab_content' ) ) {
 
         global $product;
 
-        _e ( wp_unslash ( $product->get_meta ( 'warranty' ) ) );
+        _e ( wp_unslash ( $product->get_meta ( 'warranty' ) ), 'foundation-woocommerce' );
 
     }
 
@@ -634,7 +639,7 @@ if ( ! function_exists ( 'create_product_shipping_meta_box' ) ) {
 
             'custom_product_shipping_meta_box',
 
-            __( 'Shipping Info', 'shipping' ),
+            __( 'Shipping Info', 'foundation-woocommerce' ),
 
             'add_shipping_meta_box',
 
@@ -658,11 +663,11 @@ if ( ! function_exists ( 'add_shipping_meta_box' ) ) {
 
         $content = wp_unslash ( $product->get_meta ( 'shipping' ) );
 
-        _e ( '<div class="product_shipping">' );
+        _e ( '<div class="product_shipping">', 'foundation-woocommerce' );
 
         wp_editor ( $content, 'shipping', ['textarea_rows' => 10]);
 
-        _e ( '</div>' );
+        _e ( '</div>', 'foundation-woocommerce' );
     }
 
 }
@@ -689,7 +694,7 @@ if ( ! function_exists ( 'add_shipping_product_tab' ) ) {
 
         $tabs ['shipping_tab'] = array (
 
-            'title'         => __( 'Shipping Info', 'shipping' ),
+            'title'         => __( 'Shipping Info', 'foundation-woocommerce' ),
 
             'priority'      => 50,
 
@@ -707,7 +712,7 @@ if ( ! function_exists ( 'display_shipping_product_tab_content' ) ) {
 
         global $product;
 
-        _e ( wp_unslash ( $product->get_meta ( 'shipping' ) ) );
+        _e ( wp_unslash ( $product->get_meta ( 'shipping' ) ), 'foundation-woocommerce' );
 
     }
 }
@@ -716,13 +721,14 @@ if ( ! function_exists ( 'display_shipping_product_tab_content' ) ) {
 add_action ( 'add_meta_boxes', 'create_product_seller_meta_box' );
 
 if ( ! function_exists ( 'create_product_seller_meta_box' ) ) {
+
     function create_product_seller_meta_box () {
 
         add_meta_box (
 
             'custom_product_seller_meta_box',
 
-            __( 'Seller Profile', 'seller' ),
+            __( 'Seller Profile', 'foundation-woocommerce' ),
 
             'add_seller_meta_box',
 
@@ -743,11 +749,11 @@ if ( ! function_exists ( 'add_seller_meta_box' ) ) {
 
         $content = wp_unslash ( $product->get_meta ( 'seller' ) );
 
-        _e ( '<div class="product_seller">' );
+        _e ( '<div class="product_seller">', 'foundation-woocommerce' );
 
         wp_editor ( $content, 'seller', ['textarea_rows' => 10]);
 
-        _e ( '</div>' );
+        _e ( '</div>', 'foundation-woocommerce' );
     }
 }
 
@@ -773,7 +779,7 @@ if ( ! function_exists ( 'add_seller_product_tab' ) ) {
 
         $tabs ['seller_tab'] = array (
 
-            'title'         => __( 'Seller Profile', 'seller' ),
+            'title'         => __( 'Seller Profile', 'foundation-woocommerce' ),
 
             'priority'      => 50,
 
@@ -793,7 +799,7 @@ if ( ! function_exists ( 'display_seller_product_tab_content' ) ) {
 
         global $product;
 
-        _e ( wp_unslash ( $product->get_meta ( 'seller' ) ) );
+        _e ( wp_unslash ( $product->get_meta ( 'seller' ) ), 'foundation-woocommerce' );
 
     }
 

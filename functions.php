@@ -846,12 +846,8 @@ if ( !function_exists ( 'ajax_post_subscriber_email_handler' ) ) {
         $response = wp_remote_post ( $hubspot_list_url, $args );
 
         if ( $response['response']['code'] === 200 ) {
-
-            echo '<pre>';
                 
-            print_r($response);
-
-            echo '</pre>';
+            return $response;
 
         } else {
 

@@ -15,6 +15,12 @@
 
         <link rel="stylesheet" href="<?php echo get_template_directory_uri () . '/css/foundation-icons.css' ?>" />
 
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri () . '/css/foundation-icons.eot' ?>" />
+
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri () . '/css/foundation-icons.ttf' ?>" />
+
+        <link rel="stylesheet" href="<?php echo get_template_directory_uri () . '/css/foundation-icons.woff' ?>" />
+
         <link rel="stylesheet" href="<?php echo get_template_directory_uri () . '/css/app.css' ?>" />
 
         '<script type="text/javascript">

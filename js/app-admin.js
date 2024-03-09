@@ -14,7 +14,89 @@ $(document).ready(function() {
 
     ajaxInstagramUrl ( ajaxurl );
 
+    ajaxHubspotAccessToken ( ajaxurl );
+
+    ajaxSaveHubspotListID ( ajaxurl );
+
 });
+
+function ajaxSaveHubspotListID ( ajaxurl ) {
+
+    $('#hubspot-lists').change ( function ( e ) {
+        
+        e.preventDefault();
+
+        let hubspot_list_id = jQuery('#hubspot-lists :selected').val();
+
+        jQuery.ajax ( {
+
+            url: ajaxurl,
+
+            type: 'POST',
+
+            data: {
+
+                action: 'hubspot_lists',
+
+                hubspot_list_id: hubspot_list_id,
+            },
+
+            success: function ( response ) {
+
+                let message = '<div class="callout success" data-closable="slide-out-right">' + 
+                
+                    response + '<button class="close-button" aria-label="Dismiss alert" ' + 
+                    
+                    'type="button" data-close><span aria-hidden="true">&times;</span></button></div>';
+
+                jQuery ( '#hubspot-lists-message' ).html( message );
+
+            }
+
+        } );
+
+    } );
+
+}
+
+function ajaxHubspotAccessToken ( ajaxurl ) {
+
+    $('#save-hubspot-access-token').click ( function ( e ) {
+        
+        e.preventDefault();
+
+        let hubspot_access_token = jQuery('#hubspot-access-token').val();
+
+        jQuery.ajax ( {
+
+            url: ajaxurl,
+
+            type: 'POST',
+
+            data: {
+
+                action: 'hubspot_access_token',
+
+                hubspot_access_token: hubspot_access_token,
+            },
+
+            success: function ( response ) {
+
+                let message = '<div class="callout success" data-closable="slide-out-right">' + 
+                
+                    response + '<button class="close-button" aria-label="Dismiss alert" ' + 
+                    
+                    'type="button" data-close><span aria-hidden="true">&times;</span></button></div>';
+
+                jQuery ( '#hubspot-access-token-message' ).html( message );
+
+            }
+
+        } );
+
+    } );
+
+}
 
 function ajaxInstagramUrl ( ajaxurl ) {
 

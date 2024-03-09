@@ -91,6 +91,36 @@ if ( ! function_exists ( 'createMmenu' ) ) {
 
 }
 
+add_action( 'wp_ajax_hubspot_lists', 'ajax_hubspot_lists_handler' );
+
+if ( !function_exists ( 'ajax_hubspot_lists_handler' ) ) {
+
+    function ajax_hubspot_lists_handler () {
+        
+        update_option ( 'hubspot_list_id', $_POST['hubspot_list_id'] );
+
+        echo 'Hubspot list ID ' . $_POST['hubspot_list_id'] . ' has been updated successfully';
+
+        wp_die();
+    }
+
+}
+
+add_action( 'wp_ajax_hubspot_access_token', 'ajax_hubspot_access_token_handler' );
+
+if ( !function_exists ( 'ajax_hubspot_access_token_handler' ) ) {
+
+    function ajax_hubspot_access_token_handler () {
+        
+        update_option ( 'hubspot_access_token', $_POST['hubspot_access_token'] );
+
+        echo 'Hubspot access token has been updated successfully';
+
+        wp_die();
+    }
+
+}
+
 add_action( 'wp_ajax_instagram_url', 'ajax_instagram_url_handler' );
 
 if ( !function_exists ( 'ajax_instagram_url_handler' ) ) {
@@ -315,6 +345,34 @@ if ( ! function_exists ( 'fwct_menu_page' ) ) {
                                     />
 
                                     <button id="save-instagram-url" class="submit success button">Save</button>
+
+                                    <br/><br/>
+
+                                    <div id="hubspot-access-token-message"></div>
+
+                                    <label>Hubspot Access Token (Private App)</label>
+
+                                    <input 
+                                
+                                        id="hubspot-access-token" 
+                                        
+                                        type="text" name="hubspot-access-token" 
+                                        
+                                        placeholder="Hubspot Access Token" 
+
+                                        value="' . wp_unslash ( get_option ( 'hubspot_access_token' ) ) . '"
+                                
+                                    />
+
+                                    <button id="save-hubspot-access-token" class="submit success button">Save</button>
+
+                                    <br/><br/>
+
+                                    <div id="hubspot-lists-message"></div>
+
+                                    <label>Hubspot Subscriber List</label>
+
+                                    ' . get_hubspot_lists() . '
                             
                                 </div>
                         
@@ -739,32 +797,118 @@ if ( ! function_exists ( 'display_seller_product_tab_content' ) ) {
 
     }
 
+}     
+
+add_action( 'wp_ajax_nopriv_subscriber_email', 'ajax_post_subscriber_email_handler' );
+
+if ( !function_exists ( 'ajax_post_subscriber_email_handler' ) ) {
+
+    function ajax_post_subscriber_email_handler ( $subscriber_email ) {
+
+        $hubspot_acess_token = get_option ( 'hubspot_access_token' );
+
+        $hubspot_list_url = 'https://api.hubapi.com/contacts/v1/lists/' . get_option ( 'hubspot_list_id' ) . '/add';
+
+        $body = [
+
+            'Email' => $subscriber_email,
+
+        ];
+
+        $body = json_encode( $body );
+
+        $args = [
+
+            'body'        => $body,
+
+            'headers'     => [
+
+                'Authorization' => "Bearer ${hubspot_acess_token}",
+    
+                'Content-Type' => 'application/json'
+
+            ],
+
+            'timeout'     => 60,
+
+            'redirection' => 5,
+
+            'blocking'    => true,
+
+            'httpversion' => '1.0',
+
+            'sslverify'   => false,
+
+            'data_format' => 'body',
+
+        ];
+
+        $response = wp_remote_post ( $hubspot_list_url, $args );
+
+        if ( $response['response']['code'] === 200 ) {
+
+            echo '<pre>';
+                
+            print_r($response);
+
+            echo '</pre>';
+
+        } else {
+
+            return 'There was an error subscribing to the list. Please try again later';
+
+        }
+
+        wp_die();
+
+    }   
+
 }
 
-// create hubspot function to save subscriber to the list
-if ( ! function_exists ( 'hubspot_subscriber' ) ) {
+function get_hubspot_lists ( ) {
 
-    function hubspot_subscriber ( $email ) {
+    $hubspot_acess_token = get_option ( 'hubspot_access_token' );
 
-        $hubspot_api_key = 'YOUR API KEY HERE';  // replace with your hubspot api key
+    $hubspot_private_app_url = 'https://api.hubapi.com/contacts/v1/lists';
+    
+    $args = array (
 
-        $hubspot_list_id = 'YOUR LIST ID HERE';  // replace with your hubspot list id
+        'headers' => array (
 
-        $hubspot_form_id = 'YOUR FORM ID HERE';  // replace with your hubspot form id
+            'Authorization' => "Bearer ${hubspot_acess_token}",
+    
+            'Content-Type' => 'application/json'
 
-        $hubspot_api_url = 'https://api.hubapi.com/contacts/v1/contact/createOrUpdate/email/' . $email . '/';
+        )
 
-        $hubspot_api_url .= '?hapikey=' . $hubspot_api_key;
+    );
 
-        $hubspot_api_url .= '&listId=' . $hubspot_list_id;
+    $response = wp_remote_get ( $hubspot_private_app_url, $args );
 
-        $hubspot_api_url .= '&formId=' . $hubspot_form_id;
+    if ( $response['response']['code'] === 200 ) {
 
-        $response = wp_remote_post ( $hubspot_api_url );
+        $body = json_decode($response['body']);
 
-        return $response;
+        $lists = $body->lists;
+
+        $select = '<select id="hubspot-lists" name="hubspot-lists">';
+
+        foreach ( $lists as $list ) {
+
+            $select .= '<option value="' . $list->listId . '">' . $list->name . '</option>';
+
+        }
+
+        $select .= '</select>';
+
+        return $select;
+
+    } else {
+
+        return 'There was an error selecting subscriber list. Please try again later';
 
     }
+
 }
 
 if ( ! function_exists ( 'getMenu' ) ) {

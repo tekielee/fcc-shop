@@ -8,11 +8,109 @@ if ( ! function_exists ( 'foundation_wooocommerce_setup' ) ) {
 
         add_theme_support( 'automatic-feed-links' );
 
-        load_theme_textdomain( 'foundation-woocommerce' );
+        load_theme_textdomain( 'fcc-shop' );
 
         add_theme_support( 'title-tag' );
 
-        register_nav_menu ( 'primary', __( 'Primary', 'foundation-woocommerce' ) );
+        add_theme_support( "wp-block-styles" );
+
+        add_theme_support( "responsive-embeds" );
+
+        add_theme_support( "html5", array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ));
+
+        add_theme_support( "custom-logo", array(
+
+            'height'      => 100,
+
+            'width'       => 400,
+
+            'flex-height' => true,
+
+            'flex-width'  => true,
+
+            'header-text' => array( 'site-title', 'site-description' )
+
+        ) );
+
+        add_theme_support( "custom-header", array(
+
+            'default-image'          => '',
+
+            'width'                  => 1000,
+
+            'height'                 => 250,
+
+            'flex-height'            => true,
+
+            'flex-width'             => true,
+
+            'uploads'                => true,
+
+            'random-default'         => false,
+
+            'header-text'            => true,
+
+            'default-text-color'     => '',
+
+            'wp-head-callback'       => '',
+
+            'admin-head-callback'    => '',
+
+            'admin-preview-callback' => '',
+
+        ) );
+
+        add_theme_support( "custom-background", array(
+
+            'default-color' => '',
+
+            'default-image' => '',
+
+            'wp-head-callback' => '_custom_background_cb',
+
+            'admin-head-callback' => '',
+
+            'admin-preview-callback' => '',
+
+        ) );
+
+        add_theme_support( "align-wide" );
+
+        add_editor_style();
+
+        add_theme_support( "post-thumbnails" );
+
+        register_nav_menu ( 'primary', __( 'Primary', 'fcc-shop' ) );
+
+    }
+
+}
+
+add_action( 'wp_enqueue_scripts', 'foundation_styles' );
+
+if ( ! function_exists ( 'foundation_styles' ) ) {
+
+    function foundation_styles () {
+
+        wp_enqueue_style ( 'cl-woocommerce-foundation', get_template_directory_uri () . '/css/foundation.min.css', array(), '5.0.0' );
+
+        wp_enqueue_style ( 'cl-woocommerce-icons', get_template_directory_uri () . '/css/foundation-icons.css', array(), '5.0.0' );
+
+        wp_enqueue_style ( 'cl-woocommerce-eot', get_template_directory_uri () . '/css/foundation-icons.eot', array(), '5.0.0' );
+
+        wp_enqueue_style ( 'cl-woocommerce-ttf', get_template_directory_uri () . '/css/foundation-icons.ttf', array(), '5.0.0' );
+
+        wp_enqueue_style ( 'cl-woocommerce-woff', get_template_directory_uri () . '/css/foundation-icons.woff', array(), '5.0.0' );
+
+        wp_enqueue_style ( 'cl-woocommerce-app-css', get_template_directory_uri () . '/css/app.css', array(), '5.0.0' );
+    
+        wp_enqueue_script ( 'cl-woocommerce-jquery', get_template_directory_uri () . '/js/vendor/jquery.js', array(), '5.0.0', true );
+
+        wp_enqueue_script ( 'cl-woocommerce-what-input', get_template_directory_uri () . '/js/vendor/what-input.js', array(), '5.0.0', true );
+
+        wp_enqueue_script ( 'cl-woocommerce-foundation-js', get_template_directory_uri () . '/js/vendor/foundation.js', array(), '5.0.0', true );
+
+       wp_enqueue_script ( 'cl-woocommerce-app-js', get_template_directory_uri () . '/js/app.js', array(), '5.0.0', true );
 
     }
 
@@ -47,6 +145,41 @@ if ( ! function_exists ( 'woocommerce_scripts' ) ) {
     }
 
 }
+
+if ( ! function_exists ( 'enqueue_comments_reply' ) ) {
+
+    function enqueue_comments_reply() {
+
+        if( is_singular() && comments_open() && ( get_option( 'thread_comments' ) == 1) ) {
+
+            wp_enqueue_script( 'comment-reply', '/wp-includes/js/comment-reply.min.js', array(), false, true );
+
+        }
+
+    }
+
+}
+
+add_action(  'wp_enqueue_scripts', 'enqueue_comments_reply' );
+
+require get_template_directory() . '/inc/block-patterns.php';
+
+if ( ! function_exists( 'wc_shop_block_styles' ) ) {
+
+	function wc_shop_block_styles() {
+
+		register_block_style(
+			'woocommerce/product-title',
+			array(
+				'name'         => 'product-title',
+				'label'        => __( 'Product Title', 'fcc-shop' ),
+                'inline_style' => 'h3.wp-block-post-title a { color: red !important; }',
+			)
+		);
+	}
+ }
+
+add_action( 'init', 'wc_shop_block_styles' );
 
 if ( !function_exists ( 'search' ) ) {
 
@@ -208,9 +341,9 @@ if ( ! function_exists ( 'fwct_menu' ) ) {
 
     	add_menu_page (
 
-    		__( 'Foundation WC Theme', 'foundation-woocommerce' ),
+    		__( 'FCC Shop', 'fcc-shop' ),
 
-    		'Foundation WC Theme',
+    		'FCC Shop',
 
     		'manage_options',
 
@@ -394,7 +527,7 @@ if ( ! function_exists ( 'fwct_menu_page' ) ) {
             
         ';
 
-        _e ( $accordion );
+        echo $accordion;
 
     }
 
@@ -455,7 +588,7 @@ if ( ! function_exists ( 'create_product_specs_meta_box' ) ) {
 
             'custom_product_specs_meta_box',
 
-            __( 'Specification', 'foundation-woocommerce' ),
+            __( 'Specification', 'fcc-shop' ),
 
             'add_specs_meta_box',
 
@@ -479,11 +612,11 @@ if ( ! function_exists ( 'add_specs_meta_box' ) ) {
 
         $content = wp_unslash ( $product->get_meta ( 'specs' ) );
 
-        _e ( '<div class="product_specs">', 'foundation-woocommerce' );
+        echo '<div class="product_specs">';
 
         wp_editor ( $content, 'specs', ['textarea_rows' => 10]);
 
-        _e ( '</div>', 'foundation-woocommerce' );
+        echo '</div>';
 
     }
 
@@ -512,7 +645,7 @@ if ( ! function_exists ( 'add_specs_product_tab' ) ) {
 
         $tabs ['specs_tab'] = array (
 
-            'title'         => __( 'Specification', 'foundation-woocommerce' ),
+            'title'         => __( 'Specification', 'fcc-shop' ),
 
             'priority'      => 50,
 
@@ -532,7 +665,7 @@ if ( ! function_exists ( 'display_specs_product_tab_content' ) ) {
 
         global $product;
 
-        _e ( wp_unslash ( $product->get_meta ( 'specs' ) ), 'foundation-woocommerce' );
+        echo wp_unslash ( $product->get_meta ( 'specs' ) );
 
     }
 
@@ -548,7 +681,7 @@ if ( ! function_exists ( 'create_product_warranty_meta_box' ) ) {
 
             'custom_product_warranty_meta_box',
 
-            __( 'Warranty Info', 'foundation-woocommerce' ),
+            __( 'Warranty Info', 'fcc-shop' ),
 
             'add_warranty_meta_box',
 
@@ -572,11 +705,11 @@ if ( ! function_exists ( 'add_warranty_meta_box' ) ) {
 
         $content = wp_unslash ( $product->get_meta ( 'warranty' ) );
 
-        _e ( '<div class="product_warranty">', 'foundation-woocommerce' );
+        echo '<div class="product_warranty">';
 
         wp_editor ( $content, 'warranty', ['textarea_rows' => 10]);
 
-        _e ( '</div>', 'foundation-woocommerce' );
+        echo '</div>';
 
     }
 
@@ -604,7 +737,7 @@ if ( ! function_exists ( 'add_warranty_product_tab' ) ) {
 
         $tabs ['warranty_tab'] = array (
 
-            'title'         => __( 'Warranty Info', 'foundation-woocommerce' ),
+            'title'         => __( 'Warranty Info', 'fcc-shop' ),
 
             'priority'      => 50,
 
@@ -623,7 +756,7 @@ if ( ! function_exists ( 'display_warranty_product_tab_content' ) ) {
 
         global $product;
 
-        _e ( wp_unslash ( $product->get_meta ( 'warranty' ) ), 'foundation-woocommerce' );
+        echo wp_unslash ( $product->get_meta ( 'warranty' ) );
 
     }
 
@@ -639,7 +772,7 @@ if ( ! function_exists ( 'create_product_shipping_meta_box' ) ) {
 
             'custom_product_shipping_meta_box',
 
-            __( 'Shipping Info', 'foundation-woocommerce' ),
+            __( 'Shipping Info', 'fcc-shop' ),
 
             'add_shipping_meta_box',
 
@@ -663,11 +796,11 @@ if ( ! function_exists ( 'add_shipping_meta_box' ) ) {
 
         $content = wp_unslash ( $product->get_meta ( 'shipping' ) );
 
-        _e ( '<div class="product_shipping">', 'foundation-woocommerce' );
+        echo '<div class="product_shipping">';
 
         wp_editor ( $content, 'shipping', ['textarea_rows' => 10]);
 
-        _e ( '</div>', 'foundation-woocommerce' );
+        echo '</div>';
     }
 
 }
@@ -694,7 +827,7 @@ if ( ! function_exists ( 'add_shipping_product_tab' ) ) {
 
         $tabs ['shipping_tab'] = array (
 
-            'title'         => __( 'Shipping Info', 'foundation-woocommerce' ),
+            'title'         => __( 'Shipping Info', 'fcc-shop' ),
 
             'priority'      => 50,
 
@@ -712,7 +845,7 @@ if ( ! function_exists ( 'display_shipping_product_tab_content' ) ) {
 
         global $product;
 
-        _e ( wp_unslash ( $product->get_meta ( 'shipping' ) ), 'foundation-woocommerce' );
+        echo wp_unslash ( $product->get_meta ( 'shipping' ) );
 
     }
 }
@@ -728,7 +861,7 @@ if ( ! function_exists ( 'create_product_seller_meta_box' ) ) {
 
             'custom_product_seller_meta_box',
 
-            __( 'Seller Profile', 'foundation-woocommerce' ),
+            __( 'Seller Profile', 'fcc-shop' ),
 
             'add_seller_meta_box',
 
@@ -749,11 +882,11 @@ if ( ! function_exists ( 'add_seller_meta_box' ) ) {
 
         $content = wp_unslash ( $product->get_meta ( 'seller' ) );
 
-        _e ( '<div class="product_seller">', 'foundation-woocommerce' );
+        echo '<div class="product_seller">';
 
         wp_editor ( $content, 'seller', ['textarea_rows' => 10]);
 
-        _e ( '</div>', 'foundation-woocommerce' );
+        echo '</div>';
     }
 }
 
@@ -779,7 +912,7 @@ if ( ! function_exists ( 'add_seller_product_tab' ) ) {
 
         $tabs ['seller_tab'] = array (
 
-            'title'         => __( 'Seller Profile', 'foundation-woocommerce' ),
+            'title'         => __( 'Seller Profile', 'fcc-shop' ),
 
             'priority'      => 50,
 
@@ -799,11 +932,13 @@ if ( ! function_exists ( 'display_seller_product_tab_content' ) ) {
 
         global $product;
 
-        _e ( wp_unslash ( $product->get_meta ( 'seller' ) ), 'foundation-woocommerce' );
+        echo wp_unslash ( $product->get_meta ( 'seller' ) );
 
     }
 
 }     
+
+add_action( 'wp_ajax_subscriber_email', 'ajax_post_subscriber_email_handler' );
 
 add_action( 'wp_ajax_nopriv_subscriber_email', 'ajax_post_subscriber_email_handler' );
 

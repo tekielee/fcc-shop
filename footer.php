@@ -10,7 +10,7 @@
 
         <?php
 
-            _e ( wp_unslash ( get_option ( 'left_footer' ) ), 'foundation-woocommerce' );
+            echo wp_unslash ( get_option ( 'left_footer' ) );
 
         ?>
 
@@ -64,7 +64,7 @@
 
             <div class="large-4 cell">
 
-                <a href="<?php _e ( wp_unslash ( get_option ( 'youtube_url' ) ), 'foundation-woocommerce' ); ?>" target="_blank">
+                <a href="<?php echo wp_unslash ( get_option ( 'youtube_url' ) ); ?>" target="_blank">
                 
                     <i class="fi-social-youtube social-icon"></i>
 
@@ -74,7 +74,7 @@
 
             <div class="large-4 cell">
 
-                <a href="<?php _e ( wp_unslash ( get_option ( 'twitter_url' ) ), 'foundation-woocommerce' ); ?>" target="_blank">
+                <a href="<?php echo wp_unslash ( get_option ( 'twitter_url' ) ); ?>" target="_blank">
                 
                     <i class="fi-social-twitter social-icon"></i>
 
@@ -84,7 +84,7 @@
 
             <div class="large-4 cell">
 
-                <a href="<?php _e ( wp_unslash ( get_option ( 'instagram_url' ) ), 'foundation-woocommerce' ); ?>" target="_blank">
+                <a href="<?php echo wp_unslash ( get_option ( 'instagram_url' ) ); ?>" target="_blank">
                 
                     <i class="fi-social-instagram social-icon"></i>
 
@@ -97,14 +97,6 @@
     </div>
 
 </div>
-
-<script type="text/javascript" src="<?php echo esc_url ( get_template_directory_uri () ) . '/js/vendor/jquery.js' ?>"></script>
-
-<script type="text/javascript" src="<?php echo esc_url ( get_template_directory_uri () ) . '/js/vendor/what-input.js' ?>"></script>
-
-<script type="text/javascript" src="<?php echo esc_url ( get_template_directory_uri () ) . '/js/vendor/foundation.js' ?>"></script>
-
-<script type="text/javascript" src="<?php echo esc_url ( get_template_directory_uri () ) . '/js/app.js' ?>"></script>
 
 </body>
 

@@ -1,13 +1,104 @@
 /*
-Theme Name: Foundation Woocommerce
+Theme Name: FCC Shop
 Author: Cuong Le
-Author URI: https://github.com/tekielee/bootstrap-woocommerce-theme
+Author URI: https://github.com/tekielee/
+Theme URI: https://github.com/tekielee/fcc-shop
 Description: Four Additional WooCommerce Tabs: Specification, Warranty, Shipping Info, and Seller Info. Hubspot subscriber form.
-Version: 1.0
+Version: 1.1.5
 Tested up to: 5.8
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: foundation-woocommerce
-Tags: woococommerce-specification, woococommerce-warranty, woococommerce-shipping-info, woococommerce-seller-info, woococommerce-hubspot
+Text Domain: fcc-shop
+Tags: e-commerce, theme-options
+
+This theme, like WordPress, is licensed under the GPL.
+
+Copyright (C) 2924 Cuong Le
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
+
+ .wp-caption {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 1.5em;
+    line-height: 1.6;
+    font-size: 1.6em;
+    font-weight: 400;
+    color: #333;
+    text-align: center;
+    background-color: #f8f8f8;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+ }
+
+ .wp-caption-text {
+    margin: 0;
+    padding: 0.5em;
+    font-size: 0.875em;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #666;
+    text-align: center;
+ }
+
+ .gallery-caption {
+    margin: 0;
+    padding: 0.5em;
+    font-size: 0.875em;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #666;
+    text-align: center;
+ }
+
+ .bypostauthor {
+    font-size: 0.875em;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #666;
+    text-align: center;
+ }
+
+ .alignright {
+    float: right;
+    margin-left: 1.5em;
+ }
+
+ .alignleft {
+    float: left;
+    margin-right: 1.5em;
+ }
+
+ .aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+ .screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+ }

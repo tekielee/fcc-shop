@@ -20,7 +20,7 @@
                     
                         <span class="site-logo">
                             
-                            <a href="<?php _e ( get_site_url () ); ?>">
+                            <a href="<?php echo esc_url ( home_url () ); ?>">
 
                                 <img src="
                                 
@@ -34,7 +34,7 @@
 
                                     }
 
-                                    _e ( $logo_url );
+                                    echo $logo_url;
                                     
                                 ?>" 
                                 
@@ -64,9 +64,9 @@
                                 ?>
                                         <li class="nav-item">
 
-                                            <a class="nav-link" href=" <?php _e ( get_page_link( $page->ID ) ); ?>">
+                                            <a class="nav-link" href=" <?php echo get_page_link( $page->ID ); ?>">
 
-                                                <?php _e ( $page->post_title ); ?>
+                                                <?php echo $page->post_title; ?>
 
                                             </a>
 
@@ -78,7 +78,7 @@
 
                                 } else {
 
-                                _e ( createMmenu ( getMenu () ) );
+                                echo createMmenu ( getMenu () );
 
                                 }
 
@@ -100,7 +100,7 @@
 
                         <div class="large-6 cell">
 
-                            <form action="<?php _e ( get_site_url () . '/search', 'foundation-woocommerce' ); ?>" method="POST">
+                            <form action="<?php echo esc_url ( home_url () ) . '/search'; ?>" method="POST">
 
                                 <ul class="menu">
 
@@ -120,7 +120,7 @@
 
                             <ul class="menu">
 
-                                <li><a href="<?php _e ( get_site_url () . '/cart', 'foundation-woocommerce' ); ?>">
+                                <li><a href="<?php echo esc_url ( home_url () ) . '/cart'; ?>">
                                     
                                     <i class="fi-shopping-cart cart-icon"></i></a>
                                 
@@ -128,7 +128,7 @@
 
                                 <li class="cart-count">
                                         
-                                    <?php _e ( WC()->cart->get_cart_contents_count() ) ?>
+                                    <?php echo WC()->cart->get_cart_contents_count() ?>
                                 
                                 </li>
 

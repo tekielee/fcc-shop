@@ -8,7 +8,7 @@
 
             <tr>
       
-                <th>Search Results for: <?php _e ( $_POST['search'], 'foundation-woocommerce' ); ?></th>
+                <th>Search Results for: <?php echo  esc_html ( esc_js ( $_POST['search'] ) ); ?></th>
     
             </tr>
   
@@ -26,9 +26,9 @@
 
         <tr>
 
-            <td><a href="<?php _e ( get_the_permalink ( $search->ID ), 'foundation-woocommerce' ); ?>">
+            <td><a href="<?php echo get_the_permalink ( $search->ID ); ?>">
 
-                <?php _e ( $search->post_title, 'foundation-woocommerce' ); ?>
+                <?php echo $search->post_title; ?>
 
             </a></td>
 

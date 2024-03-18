@@ -1,24 +1,22 @@
-$(document).ready(function() {
+jQuery(document).ready(function() {
 
-    $(document).foundation();
+    jQuery(document).foundation();
 
-    ajaxSaveSubsriber ( ajaxurl );
+    ajaxSaveSubsriber ( );
     
 }); 
 
-function ajaxSaveSubsriber ( ajaxurl ) {
+function ajaxSaveSubsriber ( ) {
 
-    $('#save-subscriber').click ( function ( e ) {
+    jQuery('#save-subscriber').click ( function ( e ) {
         
         e.preventDefault();
 
         let subscriber_email = jQuery('#subscriber').val();
 
-        console.log(subscriber_email);
-
         jQuery.ajax ( {
 
-            url: ajaxurl,
+            url: '/wp-admin/admin-ajax.php',
 
             type: 'POST',
 

@@ -128,7 +128,19 @@
 
                                 <li class="cart-count">
                                         
-                                    <?php echo WC()->cart->get_cart_contents_count() ?>
+                                    <?php 
+                                        if ( function_exists ( 'WC' ) ) {
+                                    
+                                            echo WC()->cart->get_cart_contents_count();
+                                        
+                                        } else {
+
+                                            echo 0;
+
+                                        }
+
+                                        
+                                    ?>
                                 
                                 </li>
 

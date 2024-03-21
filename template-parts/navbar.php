@@ -25,6 +25,10 @@
                                 <img src="
                                 
                                 <?php 
+
+                                    $logo_height = ( get_option ( 'logo_height' ) > 0 )? get_option ( 'logo_height' ) : 50;
+
+                                    $logo_width = ( get_option ( 'logo_width' ) > 0 )? get_option ( 'logo_width' ) : 50;
                                     
                                     $logo_url = get_template_directory_uri () . '/images/logo.png';
 
@@ -40,9 +44,9 @@
                                 
                                 alt="Logo"
                                 
-                                width="50" height="50" /
+                                width="<?php echo $logo_width; ?>" height="<?php echo $logo_height ?>" 
                                 
-                                >
+                                />
                             
                             </a>
                         
